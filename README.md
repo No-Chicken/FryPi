@@ -1,1 +1,3 @@
-# FryPie-F411DevKit
+# FryPie-F411DevKit-V1.0
+
+todo
