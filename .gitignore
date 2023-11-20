@@ -1,1 +1,6 @@
+# 忽略keil的生成的output
+2.software/1.基础篇/0.template/MDK-ARM/template
 
+# 忽略GUI设置
+2.software/1.基础篇/0.template/MDK-ARM/template.uvguix.kingham
+2.software/1.基础篇/0.template/MDK-ARM/template.uvguix.lantiansb
