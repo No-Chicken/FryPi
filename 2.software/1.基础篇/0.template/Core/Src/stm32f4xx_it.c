@@ -205,7 +205,7 @@ void EXTI0_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI0_IRQn 0 */
 	blink_mode += 1;
-	if(blink_mode > 2)
+	if(blink_mode > 3)
 	{
 		blink_mode = 0;
 	}

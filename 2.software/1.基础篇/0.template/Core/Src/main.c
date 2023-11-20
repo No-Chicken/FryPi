@@ -112,6 +112,10 @@ int main(void)
 			HAL_GPIO_TogglePin(LED_T_GPIO_Port, LED_T_Pin);
 			HAL_Delay(100);
 		}
+		else if(blink_mode == 3)
+		{
+            HAL_GPIO_WritePin(LED_T_GPIO_Port, LED_T_Pin, GPIO_PIN_RESET);
+		}
 		
   }
   /* USER CODE END 3 */
@@ -135,7 +139,7 @@ void SystemClock_Config(void)
   * in the RCC_OscInitTypeDef structure.
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
-  RCC_OscInitStruct.HSEState = RCC_HSE_BYPASS;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 12;
