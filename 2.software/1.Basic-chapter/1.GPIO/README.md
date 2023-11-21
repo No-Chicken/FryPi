@@ -91,34 +91,34 @@ int main(void)
 ***（仅本次进行完全示范，之后例程README.md仅演示新内容）***
 
 ### **1.打开CubeMX，选择ACCESS TO MCU SELECTOR**
+
 <img src=".\Images\step1.png"/>
-![step1](.\Images\step1.png)
 
 ### **2.选择对应炸鸡板MCU--STM32F411RET6**
 
-![step2](.\Images\step2.1.png)
-![step2](.\Images\step2.2.png)
+<img src=".\Images\step2.1.png"/>
+<img src=".\Images\step2.2.png"/>
 
 ### **3.初始化时钟（配置时钟树）**
 
-![step3](.\Images\step3.1.png)
-![step3](.\Images\step3.2.png)
-![step3](.\Images\step3.3.png)
-![step3](.\Images\step3.4.png)
-![step3](.\Images\step3.5.png)
+<img src=".\Images\step3.1.png"/>
+<img src=".\Images\step3.2.png"/>
+<img src=".\Images\step3.3.png"/>
+<img src=".\Images\step3.4.png"/>
+<img src=".\Images\step3.5.png"/>
 
 ### **4.初始化GPIO（用于控制炸鸡板用户灯）**
 
-![step4](.\Images\step4.1.png)
-![step4](.\Images\step4.2.png)
-![step4](.\Images\step4.3.png)
+<img src=".\Images\step4.1.png"/>
+<img src=".\Images\step4.2.png"/>
+<img src=".\Images\step4.3.png"/>
 
 ### **5.生成初始化工程**
 
-![step5](.\Images\step5.1.png)
-![step5](.\Images\step5.2.png)
-![step5](.\Images\step5.3.png)
-![step5](.\Images\step5.4.png)
+<img src=".\Images\step5.1.png"/>
+<img src=".\Images\step5.2.png"/>
+<img src=".\Images\step5.3.png"/>
+<img src=".\Images\step5.4.png"/>
 
 ## 三、GPIO扩展知识（该部分摘自 [尝试使用CubeMX做stm32开发之四：GPIO配置](https://blog.csdn.net/changxiaoyong8/article/details/128176144)）
 
@@ -159,12 +159,12 @@ int main(void)
 5）User Label：用户标签，可以按照需要给引脚命名
 
 普通GPIO口配置（用于控制LED灯）
-![1](.\Images\1.png)
+<img src=".\Images\1.png"/>
 ADC引脚配置
-![2](.\Images\2.png)
+<img src=".\Images\2.png"/>
 串行烧录引脚配置
-![3](.\Images\3.png)
+<img src=".\Images\3.png"/>
 TIM比较输出引脚配置
-![4](.\Images\4.png)
+<img src=".\Images\4.png"/>
 UART引脚配置
-![5](.\Images\5.png)
+<img src=".\Images\5.png"/>
