@@ -91,9 +91,7 @@ int main(void)
 ***（仅本次进行完全示范，之后例程README.md仅演示新内容）***
 
 ### **1.打开CubeMX，选择ACCESS TO MCU SELECTOR**
-<div align=center>
-< img src=".\Images\step1.png" alt="功能吧" style="zoom:100%;" />
-</div>
+<img src=".\Images\step1.png"/>
 ![step1](.\Images\step1.png)
 
 ### **2.选择对应炸鸡板MCU--STM32F411RET6**
