@@ -18,11 +18,12 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -86,6 +87,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -100,21 +102,26 @@ int main(void)
 		if(blink_mode == 0)
 		{
 			HAL_GPIO_TogglePin(LED_T_GPIO_Port, LED_T_Pin);
+			printf("mode0\r\n");
 			HAL_Delay(500);
 		}
 		else if(blink_mode == 1)
 		{
 			HAL_GPIO_TogglePin(LED_T_GPIO_Port, LED_T_Pin);
+			printf("mode1\r\n");
 			HAL_Delay(250);
 		}
 		else if(blink_mode == 2)
 		{
 			HAL_GPIO_TogglePin(LED_T_GPIO_Port, LED_T_Pin);
+			printf("mode2\r\n");
 			HAL_Delay(100);
 		}
 		else if(blink_mode == 3)
 		{
-            HAL_GPIO_WritePin(LED_T_GPIO_Port, LED_T_Pin, GPIO_PIN_RESET);
+      HAL_GPIO_WritePin(LED_T_GPIO_Port, LED_T_Pin, GPIO_PIN_RESET);
+			printf("close\r\n");
+			HAL_Delay(500);
 		}
 		
   }
