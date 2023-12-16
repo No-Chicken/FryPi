@@ -1,3 +1,1 @@
-Last updata: 2023.11.19
-
-todo
+这里使用的ADC1 channel1，对于IO口PA1
