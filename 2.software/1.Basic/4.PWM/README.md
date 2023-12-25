@@ -64,12 +64,13 @@ void MX_TIM2_Init(void)
 第一张图是pulse设置为300，第二张图是设置为800。
 
 <div align=center>
-<img src=".\images\pulse=300.jpg" alt="pulse=300" style="zoom:100%;" />
+<img src=".\images\pulse300.jpg" alt="pulse=300" style="zoom:100%;" />
 </div>
 
 <div align=center>
-<img src=".\images\pulse=800.jpg" alt="pulse=800" style="zoom:100%;" />
+<img src=".\images\pulse800.jpg" alt="pulse=800" style="zoom:100%;" />
 </div>
+
 
 ### 2.示例二： PWM互补输出，带死区
 
