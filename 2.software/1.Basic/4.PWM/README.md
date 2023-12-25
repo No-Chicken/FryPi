@@ -95,7 +95,8 @@ sBreakDeadTimeConfig.DeadTime = 20;
 <img src=".\images\DTS.jpg" alt="DTS" style="zoom:100%;" />
 </div>
 
-### 3. 作业：SPWM
+### 3. 作业
 
+这里仅展示了PWM的部分功能，更多详细的可以看官方的手册和官方的例程。
 
-感兴趣可以试下如何生成SPWM，完成呼吸灯的效果
+感兴趣可以尝试下如何生成SPWM，完成呼吸灯的效果。
