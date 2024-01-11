@@ -1,5 +1,3 @@
-### **this is a template project, using the CubeMX code frame**
-
 ## ***Cube AI Demo***
 
 ​	*该例程使用Cube AI套件，在STM32上运行一个神经网络，功能实现分为以下几个步骤：*
