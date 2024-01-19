@@ -18,6 +18,8 @@
         }
     ],
     "files.associations": {
-        "stm32f4xx_it.h": "c"
+        "stm32f4xx_it.h": "c",
+        "lcd_init.h": "c",
+        "tim.h": "c"
     }
 }

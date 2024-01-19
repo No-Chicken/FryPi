@@ -22,6 +22,7 @@
 #include "dma.h"
 #include "rtc.h"
 #include "spi.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -104,8 +105,21 @@ int main(void)
   MX_SPI1_Init();
   MX_RTC_Init();
   MX_USART1_UART_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
 
+  //RTC Wake
+	if(HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 2000, RTC_WAKEUPCLOCK_RTCCLK_DIV16) != HAL_OK)
+  {
+    Error_Handler();
+  }
+	//usart start
+	HAL_UART_Receive_DMA(&huart1,(uint8_t*)HardInt_receive_str,25);
+	__HAL_UART_ENABLE_IT(&huart1,UART_IT_IDLE);
+
+	//PWM Start
+	HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
+	
   //sys delay
 	delay_init();
 
@@ -120,19 +134,11 @@ int main(void)
 	LCD_Init();
 	LCD_Fill(0,0,LCD_W,LCD_H,BLACK);
 	delay_ms(10);
-	LCD_ShowString(72,LCD_H/2,(uint8_t*)"Welcome!",WHITE,BLACK,24,0);//12*6,16*8,24*12,32*16
-	LCD_ShowString(42,LCD_H/2+48,(uint8_t*)"OV-Watch V2.3",WHITE,BLACK,24,0);
+  LCD_Set_Light(50);
+	LCD_ShowString(72,LCD_H/2-20,(uint8_t*)"Welcome!",WHITE,BLACK,24,0);//12*6,16*8,24*12,32*16
+	LCD_ShowString(42,LCD_H/2+48-20,(uint8_t*)"OV-Watch V2.3",WHITE,BLACK,24,0);
 	delay_ms(1000);
-	LCD_Fill(0,LCD_H/2-24,LCD_W,LCD_H/2+49,BLACK);
-	
-  //RTC Wake
-	if(HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 2000, RTC_WAKEUPCLOCK_RTCCLK_DIV16) != HAL_OK)
-  {
-    Error_Handler();
-  }
-	//usart start
-	HAL_UART_Receive_DMA(&huart1,(uint8_t*)HardInt_receive_str,25);
-	__HAL_UART_ENABLE_IT(&huart1,UART_IT_IDLE);
+	LCD_Fill(0,LCD_H/2-24-20,LCD_W,LCD_H/2+49-20,BLACK);
 
   //LVGL init
 	lv_init();

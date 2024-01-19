@@ -1,7 +1,7 @@
 #include "lcd_init.h"
 #include "delay.h"
 #include "spi.h"
-//#include "tim.h"
+#include "tim.h"
 
 /******************************************************************************
       函数说明：LCD端口初始化
@@ -15,6 +15,7 @@ void LCD_GPIO_Init(void)
 	__HAL_RCC_GPIOC_CLK_ENABLE();
  	__HAL_RCC_GPIOB_CLK_ENABLE();
 	__HAL_RCC_GPIOD_CLK_ENABLE();
+	__HAL_RCC_GPIOA_CLK_ENABLE();
 	
 	GPIO_InitStructure.Pin = RES_PIN;	 
  	GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP; 		 //推挽输出
@@ -22,11 +23,11 @@ void LCD_GPIO_Init(void)
  	HAL_GPIO_Init(GPIOB, &GPIO_InitStructure);	  //初始化GPIOB
  	HAL_GPIO_WritePin(GPIOB, RES_PIN, GPIO_PIN_SET);
 
-	GPIO_InitStructure.Pin = DC_PIN|BLK_PIN|GPIO_PIN_11;	 
+	GPIO_InitStructure.Pin = DC_PIN;	 
  	GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP; 		 //推挽输出
 	GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_VERY_HIGH;//速度50MHz
  	HAL_GPIO_Init(GPIOC, &GPIO_InitStructure);	  //初始化GPIOC
- 	HAL_GPIO_WritePin(GPIOC, DC_PIN|BLK_PIN|GPIO_PIN_11, GPIO_PIN_SET);
+ 	HAL_GPIO_WritePin(GPIOC, DC_PIN, GPIO_PIN_SET);
 
 	GPIO_InitStructure.Pin = CS_PIN;	 
  	GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP; 		 //推挽输出
@@ -134,8 +135,8 @@ void LCD_Address_Set(u16 x1,u16 y1,u16 x2,u16 y2)
 ******************************************************************************/
 void LCD_Set_Light(uint8_t dc)
 {
-//	if(dc>=5 && dc<=100)
-//		__HAL_TIM_SetCompare(&htim3,TIM_CHANNEL_3,dc*PWM_PERIOD/100);
+	if(dc>=5 && dc<=100)
+		__HAL_TIM_SetCompare(&htim2,TIM_CHANNEL_1,dc*PWM_PERIOD/100);
 }
 
 
@@ -146,8 +147,8 @@ void LCD_Set_Light(uint8_t dc)
 ******************************************************************************/
 void LCD_Close_Light(void)
 {
-	//__HAL_TIM_SetCompare(&htim3,TIM_CHANNEL_3,0);
-	//HAL_TIM_PWM_Stop(&htim3,TIM_CHANNEL_3);
+	__HAL_TIM_SetCompare(&htim2,TIM_CHANNEL_1,0);
+	HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
 }
 
 
@@ -158,7 +159,7 @@ void LCD_Close_Light(void)
 ******************************************************************************/
 void LCD_Open_Light(void)
 {
-	//HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_3);
+	HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
 }
 
 /******************************************************************************
