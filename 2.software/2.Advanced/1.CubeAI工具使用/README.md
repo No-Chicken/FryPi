@@ -8,7 +8,7 @@
 
 ​	这里是我们的目标是预测正弦函数。给定一个输入，范围(0, 180)，输出其对应的正弦值范围(0, 1)。搭建的网络结构如下图所示：
 
-<img src=".\images\模型结构.jpg"/>
+<img src="./images/模型结构.jpg"/>
 
 ### 2. 生成sin(x)数据，进行模型的训练
 
@@ -52,7 +52,7 @@ open("./Embedded_things/sine_calcu.tflite", "wb").write(tflite_model)
 
 ​	如果想测试一下模型，可以看一下test.py，这里就不过多进行阐述。以下是在./python_code中所有的文件，读者请自行查阅。
 
-<img src=".\images\文件.jpg"/>
+<img src="./images/文件.jpg"/>
 
 ## 二、STM32工程创建
 
@@ -60,15 +60,15 @@ open("./Embedded_things/sine_calcu.tflite", "wb").write(tflite_model)
 
 ### **2.打开select components**，选上X-CUBE-AI
 
-<img src=".\images\step0.jpg"/>
+<img src="./images/step0.jpg"/>
 
-<img src=".\images\step1.jpg"/>
+<img src="./images/step1.jpg"/>
 
 ### **3.添加网络，选择你的模型（.h5或.tflite），再进行验证**
 
-<img src=".\images\step3.jpg"/>
+<img src="./images/step3.jpg"/>
 
-<img src=".\images\step4.png"/>
+<img src="./images/step4.png"/>
 
 ### **4.生成工程**
 
@@ -128,5 +128,5 @@ int aiSystemPerformanceProcess(void)
 
 ​	通过串口传数据到上位机VAFA，其中蓝色的线为准确的sin(x)的值，绿色的为模型输出的值，可以看到拟合的比较好，但是在接近sin(x)=0的附近，拟合的比较不好。
 
-<img src=".\images\step5.jpg"/>
+<img src="./images/step5.jpg"/>
 
