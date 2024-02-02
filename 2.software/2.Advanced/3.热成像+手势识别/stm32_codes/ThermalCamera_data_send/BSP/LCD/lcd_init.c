@@ -15,6 +15,13 @@ void LCD_GPIO_Init(void)
 	__HAL_RCC_GPIOC_CLK_ENABLE();
  	__HAL_RCC_GPIOB_CLK_ENABLE();
 	__HAL_RCC_GPIOD_CLK_ENABLE();
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+	
+	GPIO_InitStructure.Pin = BLK_PIN;	 
+ 	GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP; 		 //推挽输出
+	GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_VERY_HIGH;//速度50MHz
+ 	HAL_GPIO_Init(GPIOA, &GPIO_InitStructure);	  //初始化GPIOA
+ 	HAL_GPIO_WritePin(GPIOA, BLK_PIN, GPIO_PIN_SET);
 	
 	GPIO_InitStructure.Pin = RES_PIN;	 
  	GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP; 		 //推挽输出
@@ -22,11 +29,11 @@ void LCD_GPIO_Init(void)
  	HAL_GPIO_Init(GPIOB, &GPIO_InitStructure);	  //初始化GPIOB
  	HAL_GPIO_WritePin(GPIOB, RES_PIN, GPIO_PIN_SET);
 
-	GPIO_InitStructure.Pin = DC_PIN|BLK_PIN|GPIO_PIN_11;	 
+	GPIO_InitStructure.Pin = DC_PIN;	 
  	GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP; 		 //推挽输出
 	GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_VERY_HIGH;//速度50MHz
  	HAL_GPIO_Init(GPIOC, &GPIO_InitStructure);	  //初始化GPIOC
- 	HAL_GPIO_WritePin(GPIOC, DC_PIN|BLK_PIN|GPIO_PIN_11, GPIO_PIN_SET);
+ 	HAL_GPIO_WritePin(GPIOC, DC_PIN, GPIO_PIN_SET);
 
 	GPIO_InitStructure.Pin = CS_PIN;	 
  	GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP; 		 //推挽输出

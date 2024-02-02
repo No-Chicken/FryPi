@@ -171,6 +171,12 @@ static void drawPicture(void) {
 void mlx90640_display_process(void)
 {
 	readTempValues();
+  printf("\r\nbegin,");
+  for(uint16_t i=0; i<32*24; i++)
+  {
+    printf("%.1f,",tempValues[i]);
+  }
+  printf("end,\r\n");
   setTempScale();
   //draw legend
 

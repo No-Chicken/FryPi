@@ -115,6 +115,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 		mlx90640_display_process();
+    
     HAL_GPIO_TogglePin(LED_T_GPIO_Port,LED_T_Pin);
   }
   /* USER CODE END 3 */
