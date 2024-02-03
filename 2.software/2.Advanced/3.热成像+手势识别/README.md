@@ -2,7 +2,10 @@
 
 该例程使用MLX90640ESF-BAA模块热成像模块，进行热成像在LCD上显示，同时使用keras框架训练了一个CNN模型进行手势识别。
 
-<img src="./images/手势识别测试.gif"/>
+<p align="center">
+	<img width="50%" src="./images/手势识别测试.gif">
+</p>
+
 
 ## 一、文件夹组成
 
@@ -32,8 +35,9 @@
 
 直接使用提供的MLX90640API，然后对应更改了IO口即可，同时为了让刷屏更快，在`mlx90640_display_process(void)`函数中将`drawPicture(void)`中刷屏显示使用缓存空间进行刷屏，因为打点刷屏太慢了。
 
-<img src="./images/MLXBSP.jpg"/>
-
+<p align="center">
+	<img width="50%" src="./images/MLXBSP.jpg">
+</p>
 ```c
 static void drawPicture(void) {
 
@@ -102,9 +106,12 @@ model.summary()
 
 ### 2、CNN部署至STM32
 
+<p align="center">
+	<img width="50%" src="./images/手势识别测试.gif">
+</p>
+
 与之前第1节的cubeAI使用例程demo一样，首先将训练好得到的`gesture.h5`模型使用cubemx AI工具生成代码后，调用API，这里主要使用的`ai_mnetwork_run()`，具体如下代码块中函数`user_ai_run(const ai_float *in_data, ai_float *out_data)`所示。由于CubeMX生成代码选择的systemperform，所以要注释`MX_X_CUBE_AI_Process()`，这个里面主要是用来测试模型的性能，他默认使用的随机数填充输入。
 
-<img src="./images/手势识别测试.gif"/>
 
 ```c
 uint8_t user_ai_run(const ai_float *in_data, ai_float *out_data)
