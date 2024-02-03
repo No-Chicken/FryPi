@@ -43,38 +43,38 @@
 ```c
 static void drawPicture(void) {
 
-  static uint8_t lcd_buf[LCD_Buf_Size];//able to store 32*8 * 6*8 pixes
-  uint16_t color;
-  uint16_t indexes=0;
-  uint8_t refreshtimes=0;
-  uint8_t data[2];
-  LCD_Address_Set(12+20 , 24 , 12+20+32*8-1, 24+24*8-1);//设置显示范围
-  //pix_horizontal
-	for (y=0; y<24; y++) {
-    //pix_vertical
-		for (x=0; x<32; x++) {
-      //FillRect(Xpos, Ypos, Width, Height, RGBCode);
+static uint8_t lcd_buf[LCD_Buf_Size];//able to store 32*8 * 6*8 pixes
+    uint16_t color;
+    uint16_t indexes=0;
+    uint8_t refreshtimes=0;
+    uint8_t data[2];
+    LCD_Address_Set(12+20 , 24 , 12+20+32*8-1, 24+24*8-1);//设置显示范围
+    //pix_horizontal
+    for (y=0; y<24; y++) {
+        //pix_vertical
+        for (x=0; x<32; x++) {
+            //FillRect(Xpos, Ypos, Width, Height, RGBCode);
 
-			//LCD_Fill(12 + x*8, 24 + y*8, 12 + x*8 + 8, 24 + y*8 + 8, TempToColor(tempValues[(31-x) + (y*32)]));
-      uint16_t index_sta = 32*8*8*2*y + 8*2*x - refreshtimes*(LCD_Buf_Size);
-      color = TempToColor(tempValues[(31-x) + (y*32)]);
-      data[0] = color>>8;
-      data[1] = color&0xff;
-      for(uint8_t i=0; i<8 ; i++) {
-        uint16_t line_gap = 32*8*2*i; 
-        for(uint8_t j=0; j<8 ; j++) {
-          lcd_buf[index_sta + line_gap + 2*j + 0] = data[0];
-          lcd_buf[index_sta + line_gap + 2*j + 1] = data[1];
-          indexes += 1;
-        }
-      }
-     
-      if(indexes>=LCD_Buf_Size/2) {
-        indexes = 0;
-        refreshtimes+=1;
-        if(HAL_SPI_Transmit(&hspi1, lcd_buf, LCD_Buf_Size, 0))
-	      {printf("\r\nspi erro\r\n");}	
-      }
+            //LCD_Fill(12 + x*8, 24 + y*8, 12 + x*8 + 8, 24 + y*8 + 8, TempToColor(tempValues[(31-x) + (y*32)]));
+              uint16_t index_sta = 32*8*8*2*y + 8*2*x - refreshtimes*(LCD_Buf_Size);
+              color = TempToColor(tempValues[(31-x) + (y*32)]);
+              data[0] = color>>8;
+              data[1] = color&0xff;
+              for(uint8_t i=0; i<8 ; i++) {
+                uint16_t line_gap = 32*8*2*i; 
+                for(uint8_t j=0; j<8 ; j++) {
+                  lcd_buf[index_sta + line_gap + 2*j + 0] = data[0];
+                  lcd_buf[index_sta + line_gap + 2*j + 1] = data[1];
+                  indexes += 1;
+                }
+              }
+
+              if(indexes>=LCD_Buf_Size/2) {
+                indexes = 0;
+                refreshtimes+=1;
+                if(HAL_SPI_Transmit(&hspi1, lcd_buf, LCD_Buf_Size, 0))
+                  {printf("\r\nspi erro\r\n");}	
+              }
 		}
 	}
 }
