@@ -1,0 +1,465 @@
+{
+    "_allocate_inputs": 4,
+    "_allocate_outputs": 4,
+    "cli_parameters": "generate --name gesture_cnn -m E:/projects/programs/python_codes/Embedded_things/thermal/gesture.h5 --type keras --compression none --verbosity 1 --workspace C:\\Users\\kingham\\AppData\\Local\\Temp\\mxAI_workspace564084244700017782962984196162732 --output C:\\Users\\kingham\\.stm32cubemx\\network_output --allocate-inputs --series stm32f4 --allocate-outputs",
+    "cli_version": {
+        "major": 1,
+        "micro": 0,
+        "minor": 7
+    },
+    "cli_version_str": "1.7.0",
+    "code_size": 0,
+    "compression": {
+        "factor": null,
+        "layers": {}
+    },
+    "date_time": "Sat Feb  3 17:16:14 2024",
+    "error": 0,
+    "error_str": [],
+    "exec_cmd": "generate",
+    "exec_duration": 0.0,
+    "hash": "58e168a269f9c3f0cc8187a031e49b30",
+    "inputs": [
+        "input_0"
+    ],
+    "layers": [
+        {
+            "c_id": [
+                0,
+                1
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 3072,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        24,
+                        32,
+                        1,
+                        1
+                    ]
+                },
+                "rom_size": 520
+            },
+            "id": 0,
+            "inputs": [],
+            "name": "input_0",
+            "original": null,
+            "type": "Input"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 70005,
+                "n_params": 130,
+                "psize": 520,
+                "rom_output": {
+                    "c_size": 11200,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        20,
+                        28,
+                        5,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [
+                "input_0"
+            ],
+            "name": "conv2d_conv2d",
+            "original": "Conv2D",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 2800,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 11200,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        20,
+                        28,
+                        5,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [
+                "conv2d_conv2d"
+            ],
+            "name": "conv2d",
+            "original": "Conv2D",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                2
+            ],
+            "extras": {
+                "n_macc": 2800,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 2800,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        10,
+                        14,
+                        5,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 1,
+            "inputs": [
+                "conv2d"
+            ],
+            "name": "max_pooling2d",
+            "original": "MaxPooling2D",
+            "type": "Pool"
+        },
+        {
+            "c_id": [
+                3,
+                4
+            ],
+            "extras": {
+                "n_macc": 12963,
+                "n_params": 138,
+                "psize": 552,
+                "rom_output": {
+                    "c_size": 1152,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        8,
+                        12,
+                        3,
+                        1
+                    ]
+                },
+                "rom_size": 552
+            },
+            "id": 2,
+            "inputs": [
+                "max_pooling2d"
+            ],
+            "name": "conv2d_1_conv2d",
+            "original": "Conv2D",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 288,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 1152,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        8,
+                        12,
+                        3,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 2,
+            "inputs": [
+                "conv2d_1_conv2d"
+            ],
+            "name": "conv2d_1",
+            "original": "Conv2D",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                5
+            ],
+            "extras": {
+                "n_macc": 288,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 288,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        4,
+                        6,
+                        3,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 3,
+            "inputs": [
+                "conv2d_1"
+            ],
+            "name": "max_pooling2d_1",
+            "original": "MaxPooling2D",
+            "type": "Pool"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 4,
+            "inputs": [
+                "max_pooling2d_1"
+            ],
+            "name": "flatten",
+            "original": "Flatten",
+            "type": "Reshape"
+        },
+        {
+            "c_id": [
+                6,
+                7
+            ],
+            "extras": {
+                "n_macc": 2336,
+                "n_params": 2336,
+                "psize": 9344,
+                "rom_output": {
+                    "c_size": 128,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        32,
+                        1
+                    ]
+                },
+                "rom_size": 9344
+            },
+            "id": 5,
+            "inputs": [
+                "flatten"
+            ],
+            "name": "dense_dense",
+            "original": "Dense",
+            "type": "Dense"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 32,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 128,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        32,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 5,
+            "inputs": [
+                "dense_dense"
+            ],
+            "name": "dense",
+            "original": "Dense",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                8,
+                9
+            ],
+            "extras": {
+                "n_macc": 528,
+                "n_params": 528,
+                "psize": 2112,
+                "rom_output": {
+                    "c_size": 64,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        16,
+                        1
+                    ]
+                },
+                "rom_size": 2112
+            },
+            "id": 6,
+            "inputs": [
+                "dense"
+            ],
+            "name": "dense_1_dense",
+            "original": "Dense",
+            "type": "Dense"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 16,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 64,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        16,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 6,
+            "inputs": [
+                "dense_1_dense"
+            ],
+            "name": "dense_1",
+            "original": "Dense",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                10,
+                11
+            ],
+            "extras": {
+                "n_macc": 102,
+                "n_params": 102,
+                "psize": 408,
+                "rom_output": {
+                    "c_size": 24,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        6,
+                        1
+                    ]
+                },
+                "rom_size": 408
+            },
+            "id": 7,
+            "inputs": [
+                "dense_1"
+            ],
+            "name": "dense_2_dense",
+            "original": "Dense",
+            "type": "Dense"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 90,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 24,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        6,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 7,
+            "inputs": [
+                "dense_2_dense"
+            ],
+            "name": "dense_2",
+            "original": "Dense",
+            "type": "Nonlinearity"
+        }
+    ],
+    "model_files": [
+        "E:\\projects\\programs\\python_codes\\Embedded_things\\thermal\\gesture.h5"
+    ],
+    "model_n_params": 3234,
+    "model_name": "gesture",
+    "model_size": 12936,
+    "model_type": "keras",
+    "name": "gesture_cnn",
+    "outputs": [
+        "dense_2"
+    ],
+    "ram_io_size": [
+        3072,
+        24
+    ],
+    "ram_size": [
+        13004,
+        13004
+    ],
+    "report_version": 1.1,
+    "rom_cfact": 1.0,
+    "rom_heap_inspector": 2048,
+    "rom_inputs": [
+        {
+            "c_size": 3072,
+            "c_type": "float",
+            "name": "input_0"
+        }
+    ],
+    "rom_n_macc": 92248,
+    "rom_outputs": [
+        {
+            "c_size": 24,
+            "c_type": "float",
+            "name": "dense_2"
+        }
+    ],
+    "rom_size": 12936,
+    "strategy": "heap_overlay",
+    "tools_api_version": {
+        "major": 1,
+        "micro": 0,
+        "minor": 7
+    },
+    "tools_version": {
+        "extra": "19520",
+        "major": 8,
+        "micro": 0,
+        "minor": 1
+    },
+    "val_error": -1.0,
+    "val_error_desc": "None (None) #-1",
+    "val_metrics": []
+}
