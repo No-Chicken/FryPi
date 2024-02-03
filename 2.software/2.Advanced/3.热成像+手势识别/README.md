@@ -6,6 +6,7 @@
 
 ## 一、文件夹组成
 
+```c
 ├─python_codes
 │  │  data_2_imgfile.py
 │  │  data_get.py
@@ -21,6 +22,7 @@
 └─stm32_codes
     ├─ThermalCamera_data_send
     ├─Thermalgesture
+```
 
 文件夹大致如上，`python_codes`存放的是：从下位机获取数据、网络训练、测试的代码等。采集的热成像数据保存在.npz格式的文件中，用于网络的训练和测试，模型保存为.h5格式。
 
