@@ -14,7 +14,11 @@ https://github.com/No-Chicken/OV-Watch
 
 ## 部分界面展示图：
 
-<img src="./images/演示.gif"  width="50%"/>
+<p align="center">
+  <img width="50%" src="./images/演示.gif">
+</p>
+
+<img src="./images/演示.gif"/>
 
 
 <div align=center>
