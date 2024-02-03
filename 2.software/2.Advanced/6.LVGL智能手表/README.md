@@ -15,27 +15,21 @@ https://github.com/No-Chicken/OV-Watch
 ## 部分界面展示图：
 
 <p align="center">
-  <img width="50%" src="./images/演示.gif">
+	<img width="50%" src="./images/演示.gif">
 </p>
 
 <p align="center">
-  <img width="50%" src="./images/界面.jpg">
+	<img width="50%" src="./images/界面.jpg">
 </p>
 
-<div align=center>
-<img src="./images/界面.jpg"/>
-</div>
+<p align=center>
+	<img src="./images/实物图.jpg" width="50%" />
+</p>
 
+<p align=center>
+    <img width="50%" src="./images/实物图2.png">
+</p>
 
-<div align=center>
-<img src="./images/实物图.jpg" width="50%" />
-</div>
-
-
-<div align=center>
-<img src="./images/实物图2.png" alt="实物图2" style="zoom:100%;" />
-</div>
-
-<div align=center>
-<img src="./images/实物图3.png" alt="实物图3" style="zoom:100%;" />
-</div>
+<p align=center>
+    <img src="./images/实物图3.png" width="50%" />
+</p>

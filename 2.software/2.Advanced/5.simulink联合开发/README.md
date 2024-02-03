@@ -13,7 +13,7 @@
 <div align=center>
 <img src="./images/step2.png" alt="step2" style="zoom:100%;" />
 </div>
-**2.配置好所有环境后，创建simulink工程和cubemx工程。注意这里需要先配置好Cube和cubeprogramer**
+**2.配置好所有环境后，创建simulink工程和cubemx工程。注意这里需要先配置好CubeMx和cubeprogramer**
 
 <div align=center>
 <img src="./images/step3.png" alt="step3" style="zoom:100%;" />
