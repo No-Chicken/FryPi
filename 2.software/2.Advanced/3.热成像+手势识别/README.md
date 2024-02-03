@@ -9,7 +9,7 @@
 
 ## 一、文件夹组成
 
-```c
+```python
 ├─python_codes
 │  │  data_2_imgfile.py
 │  │  data_get.py
@@ -38,6 +38,8 @@
 <p align="center">
 	<img width="50%" src="./images/MLXBSP.jpg">
 </p>
+
+
 ```c
 static void drawPicture(void) {
 
@@ -78,6 +80,8 @@ static void drawPicture(void) {
 }
 ```
 
+
+
 ## 三、卷积神经网络搭建与部署
 
 ### 1、CNN搭建与训练
@@ -103,6 +107,8 @@ model = tf.keras.models.Sequential([
 
 model.summary()
 ```
+
+
 
 ### 2、CNN部署至STM32
 
