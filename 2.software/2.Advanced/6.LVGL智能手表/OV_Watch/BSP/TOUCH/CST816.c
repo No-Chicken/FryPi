@@ -1,6 +1,7 @@
 #include "CST816.h" 
 
 #define TOUCH_OFFSET_Y 15
+#define REVERSE 1
 
 CST816_Info	CST816_Instance;
 
@@ -115,6 +116,10 @@ void CST816_Get_XY_AXIS(void)
 	IIC_Read_Multi_Byte(&CST816_dev,Device_Addr,XposH,4,DAT);
 	CST816_Instance.X_Pos=((DAT[0]&0x0F)<<8)|DAT[1];//(temp[0]&0X0F)<<4|
 	CST816_Instance.Y_Pos=((DAT[2]&0x0F)<<8)|DAT[3] + TOUCH_OFFSET_Y;//(temp[2]&0X0F)<<4|
+	#if REVERSE
+		CST816_Instance.X_Pos = 239 - CST816_Instance.X_Pos;
+		CST816_Instance.Y_Pos = 279 - CST816_Instance.Y_Pos;
+	#endif
 }
 
 

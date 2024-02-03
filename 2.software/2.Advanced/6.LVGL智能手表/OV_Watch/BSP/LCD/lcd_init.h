@@ -3,7 +3,7 @@
 
 #include "sys.h"
 
-#define USE_HORIZONTAL 0  //设置横屏或者竖屏显示 0或1为竖屏 2或3为横屏
+#define USE_HORIZONTAL 1 //设置横屏或者竖屏显示 0或1为竖屏 2或3为横屏
 
 
 #if USE_HORIZONTAL==0||USE_HORIZONTAL==1
@@ -32,8 +32,8 @@
 #define CS_PORT				GPIOD
 #define CS_PIN				GPIO_PIN_2
 
-#define BLK_PORT			GPIOC
-#define BLK_PIN				GPIO_PIN_11
+#define BLK_PORT			GPIOA
+#define BLK_PIN				GPIO_PIN_15
 
 #define LCD_SCLK_Clr() HAL_GPIO_WritePin(SCLK_PORT,SCLK_PIN,GPIO_PIN_RESET)//SCL=SCLK
 #define LCD_SCLK_Set() HAL_GPIO_WritePin(SCLK_PORT,SCLK_PIN,GPIO_PIN_SET)
