@@ -4,8 +4,13 @@
 #include "delay.h"
 #include "spi.h"
 
-#define OFFSET_Y 0
-#define OFFSET_X 20
+#if USE_HORIZONTAL == 0 || USE_HORIZONTAL == 1
+	#define OFFSET_Y 20
+	#define OFFSET_X 0
+#else
+	#define OFFSET_Y 0
+	#define OFFSET_X 20
+#endif
 
 /******************************************************************************
       函数说明：在指定区域填充颜色
