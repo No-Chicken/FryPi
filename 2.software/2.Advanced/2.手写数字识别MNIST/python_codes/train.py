@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import datetime
 
-f = np.load("E:\projects\programs\python_codes\Embedded_things\LeNetTest\mnist.npz")
+f = np.load("mnist.npz")
 x_train, y_train = f['x_train'],f['y_train']
 x_test, y_test = f['x_test'],f['y_test']
 f.close()
@@ -64,14 +64,14 @@ endtime = datetime.datetime.now()
 time_cost = endtime - start_time
 print('time_cost = ', time_cost)
 #保存/加载模型
-model.save('Embedded_things\LeNetTest\mnist.h5')
+model.save('mnist.h5')
 
 #------------------------------【评估】---------------------------------
 
 x_test = np.pad(x_test, ((0, 0), (1, 1), (1, 1)), 'constant', constant_values=0)  #将图片从28*28扩展成30*30
 print(x_test.shape)
 print(x_test[0])
-model = tf.keras.models.load_model('Embedded_things\LeNetTest\mnist.h5')
+model = tf.keras.models.load_model('mnist.h5')
 model.summary()
 print(model.evaluate(x_test, y_test))
 
