@@ -1,0 +1,265 @@
+#########  ×ÔÈİ²âÊÔÅäÖÃÎÄ¼ş°æ±¾  #########
+
+config_file_version = 30
+
+############ ÏîÄ¿TP»ù±¾²ÎÊıÅäÖÃ ############
+
+hex_file = CSW_2202150_CST816T_SGD_TB_HTY569169_PY_P1690H002.hex
+
+//I2C speed: 0=50khz, 1=100khz, 2=200khz, 3=400khz
+i2c_frequncy = 0
+
+//Test start trigger: 0=Manual test, 1=Auto test, 2=SN, 3=Remote Ctrl
+test_trigger_type = 1
+
+//SN trigger type: 0=trigger by SN length, 1=trigger by character 'Enter' in SN
+sn_trigger_type = 1
+
+sn_trigger_length = 8
+sn_valid_length_list =
+clear_sn = disable
+set_next_sncursor = disable
+sn_disable_button = disable
+sn_disable_shortcut = disable
+remote_disable_button = disable
+remote_disable_shortcut = disable
+download_firmware = enable
+test_tp = enable
+set_module_id = disable
+check_module_id = disable
+module_id = 0x00
+chip_type = cst816t
+#boot_force = 
+code_checksum = 0x1696
+x_res = 240
+y_res = 280
+key_num = 0
+sensor_num = 12
+cmod_num = 2
+rst_pin = enable
+irq_pin = enable
+fw_version = 0x1
+
+wait_time = 200
+cp_process_time = 200
+low_power_time = 200
+
+############ ²âÊÔÃüÁîÅäÖÃ ############
+
+set_cp1_param = w 15 c0 80 30 20 0 p
+set_cp2_param = w 15 c0 80 60 20 0 p
+set_cp3_param = w 15 c0 80 20 30 0 p
+
+enter_screen_idac_test = w 15 ff 1 p
+wait_idac_done = w 15 ff p r 15 u8_r p
+read_idac = w 15 40 p r 15 u16_ p
+
+read_cmod = w 15 b0 p r 15 u16_ p
+read_short = w 15 80 p r 15 u8_ p
+
+//¹Ø±ÕµÍ¹¦ºÄÄ£Ê½ÃüÁî
+disable_low_power = w 15 fe 07 p
+
+enter_deep_sleep = w 15 e5 03 p
+enter_pin_voltage_test = w 15 b5 03 p
+
+get_fw_version = w 15 a6 p r 15 u8_r u8_r u8_r u8_r u8_r u8_r u8_r p
+
+############# µ÷ÊÔÓÃÃüÁîÅäÖÃ ############
+
+read_rawdata = w 15 fe 6 p w 15 40 p r 15 x u16_ p
+read_diff = w 15 fe 7 p w 15 60 p r 15 x u16_ p
+
+#enter_read_point = 
+read_point = w 15 fe e0 p  w 15 fa 80 p w 15 30 p r 15 x u8_i u8_i u8_i u8_i u8_i u8_i u8_i u8_i u8_i u8_i p
+
+################### ²âÊÔÄ£Ê½Óë¿ª¹Ø ###################
+
+no_redownload_same_bin = enable
+enable_bin_verify = enable
+insert_next_delay = 0
+keep_poweroff_not_test = disable
+write_download_time = enable
+
+## ¿Í»§ÏîÄ¿±àÂë²âÊÔÅäÖÃ ##
+enable_customercode_test = disable
+customer_code = 0102030405060708090A
+
+## ÏîÄ¿ID²âÊÔÅäÖÃ ##
+enable_projectid_test = disable
+project_id = 0
+
+## ²âÊÔ·Ö×éÅäÖÃ ##
+advanced_deltacp_sort = 1 1 1 1 1 1 1 1 1 1
+
+## ²âÊÔ½ÚµãºÚ°×Ãûµ¥ÅäÖÃ ##
+advanced_node_flag = 1 1 1 1 1 1 1 1 1 1
+
+## CP²âÊÔãĞÖµ ##
+advanced_cp_base = 13172 13834 12636 13157 12078 12687 11927 12350 11231 13312
+advanced_cp_min_ratio = 15
+advanced_cp_min = 11592 12174 11120 11579 10629 11165 10496 10868 9884 11715
+advanced_cp_max_ratio = 20
+advanced_cp_max = 15806 16600 15163 15788 14493 15224 14312 14820 13477 15974
+
+## DeltaCP²âÊÔÅäÖÃ ##
+advanced_deltacp_base = 6768 7124 6511 6684 6126 6445 6002 6256 5730 6984
+advanced_deltacp_adj_base = 103 106 106 103 102 103 104 89 95 111
+advanced_deltacp_rel_base = 95 105 97 102 95 105 95 104 82 121
+
+## ·Ö×é1 deltacpÅäÖÃ ##
+advanced_deltacp_min_sort1 = 15
+advanced_deltacp_max_sort1 = 20
+advanced_deltacp_adj_min_sort1 = 10
+advanced_deltacp_adj_max_sort1 = 10
+advanced_deltacp_rel_min_sort1 = 10
+advanced_deltacp_rel_max_sort1 = 10
+
+## ·Ö×é2 deltacpÅäÖÃ ##
+advanced_deltacp_min_sort2 = 15
+advanced_deltacp_max_sort2 = 20
+advanced_deltacp_adj_min_sort2 = 8
+advanced_deltacp_adj_max_sort2 = 20
+advanced_deltacp_rel_min_sort2 = 8
+advanced_deltacp_rel_max_sort2 = 20
+
+## ·Ö×é3 deltacpÅäÖÃ ##
+advanced_deltacp_min_sort3 = 15
+advanced_deltacp_max_sort3 = 20
+advanced_deltacp_adj_min_sort3 = 8
+advanced_deltacp_adj_max_sort3 = 20
+advanced_deltacp_rel_min_sort3 = 8
+advanced_deltacp_rel_max_sort3 = 20
+
+## ·Ö×é4 deltacpÅäÖÃ ##
+advanced_deltacp_min_sort4 = 15
+advanced_deltacp_max_sort4 = 20
+advanced_deltacp_adj_min_sort4 = 8
+advanced_deltacp_adj_max_sort4 = 20
+advanced_deltacp_rel_min_sort4 = 8
+advanced_deltacp_rel_max_sort4 = 20
+
+## ·Ö×é5 deltacpÅäÖÃ ##
+advanced_deltacp_min_sort5 = 15
+advanced_deltacp_max_sort5 = 20
+advanced_deltacp_adj_min_sort5 = 8
+advanced_deltacp_adj_max_sort5 = 20
+advanced_deltacp_rel_min_sort5 = 8
+advanced_deltacp_rel_max_sort5 = 20
+
+## ·Ö×é6 deltacpÅäÖÃ ##
+advanced_deltacp_min_sort6 = 15
+advanced_deltacp_max_sort6 = 20
+advanced_deltacp_adj_min_sort6 = 8
+advanced_deltacp_adj_max_sort6 = 20
+advanced_deltacp_rel_min_sort6 = 8
+advanced_deltacp_rel_max_sort6 = 20
+
+## CKdiff²âÊÔÅäÖÃ ##
+enable_ckdiff_test = enable
+advanced_ckdiff_base = 193 193 195 195 195 193 195 193 190 192
+advanced_ckdiff_min_ratio = 15
+advanced_ckdiff_min = 10 10 10 10 10 10 10 10 10 10
+advanced_ckdiff_max_ratio = 20
+advanced_ckdiff_max = 20 20 20 20 20 20 20 20 20 20
+
+## Rawdata²âÊÔÅäÖÃ ##
+enable_rawdata_test = enable
+advanced_raw_base = 4436 5432 3547 3473 3096 3269 3102 3160 3222 4852
+advanced_raw_min_ratio = 15
+advanced_raw_min = 3771 4618 3015 2953 2632 2779 2637 2686 2739 4125
+advanced_raw_max_ratio = 15
+advanced_raw_max = 5101 6246 4079 3993 3560 3759 3567 3634 3705 5579
+
+## Diff²âÊÔÅäÖÃ ##
+enable_diffdata_test = enable
+advanced_diff_max_ratio = 15
+advanced_diff_max = 15 15 15 15 15 15 15 15 15 15
+
+## CMod²âÊÔÅäÖÃ ##
+advanced_cmod_base = 367 349
+advanced_cmod_min_ratio = 20
+advanced_cmod_min = 294 280
+advanced_cmod_max_ratio = 20
+advanced_cmod_max = 440 418
+
+## ¶ÌÂ·²âÊÔÅäÖÃ ##
+short_test = enable
+short_min_data = 500
+
+## »­Ïß²âÊÔÅäÖÃ ##
+enable_draw_test = disable
+
+//0: Horizontal, 1: Vertical
+draw_area_direction = 0
+
+reach_edge_lefttop = 10
+reach_edge_rightbottom = 10
+ignore_edge_lefttop = 30
+ignore_edge_rightbottom = 30
+draw_min_points = 28
+draw_max_slope = 1.00
+
+enable_draw_area1 = disable
+draw_area_min1 = 10
+draw_area_max1 = 30
+
+enable_draw_area2 = disable
+draw_area_min2 = 50
+draw_area_max2 = 70
+
+enable_draw_area3 = disable
+draw_area_min3 = 90
+draw_area_max3 = 110
+
+enable_draw_area4 = disable
+draw_area_min4 = 130
+draw_area_max4 = 150
+
+enable_draw_area5 = disable
+draw_area_min5 = 170
+draw_area_max5 = 190
+
+enable_draw_area6 = disable
+draw_area_min6 = 210
+draw_area_max6 = 230
+
+## µçÁ÷²âÊÔÅäÖÃ ##
+enable_current_test = enable
+test_low_power_current = enable
+work_current_min = 1
+//Unit: 0=mA, 1=uA
+work_current_min_unit = 0
+work_current_max = 5
+work_current_max_unit = 0
+standby_current_min = 0
+standby_current_min_unit = 0
+standby_current_max = 10
+standby_current_max_unit = 0
+deepsleep_current_min = 1
+deepsleep_current_min_unit = 1
+deepsleep_current_max = 30
+deepsleep_current_max_unit = 1
+
+## Òı½ÅÇ·Ñ¹²âÊÔÉèÖÃ ##
+enable_pin_voltage_test = disable
+irq_pin_voltage_min = 1800
+sda_pin_voltage_min = 1800
+scl_pin_voltage_min = 1800
+rst_pin_voltage_min = 1800
+irq_pin_voltage_max = 1900
+sda_pin_voltage_max = 1900
+scl_pin_voltage_max = 1900
+rst_pin_voltage_max = 1900
+enable_pin_short_test = disable
+short_pin_dropout_voltage = 30
+
+## FPCÅÅÏß²âÊÔÅäÖÃ ##
+fpc_test = disable
+fpc_min_diff = 1000
+
+## ÍøÂçÔ¶³Ì²âÊÔÅäÖÃ ##
+network_type = 0
+server_address = 127.0.0.1
+server_port = 9090
+
