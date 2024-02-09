@@ -1,5 +1,5 @@
 <p align="right">
-  <b>中文</b> | <a href="./README_Eng.md">English</a> 
+  <a href="./docs/README.md">中文</a> | <b>English</b> 
 </p> 
 
 <h1 align="center">FryPie</h1>
