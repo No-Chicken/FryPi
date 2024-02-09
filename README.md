@@ -10,9 +10,10 @@
         <img src=https://img.shields.io/github/stars/No-Chicken/FryPie-F411DevKit.svg>
 </div>
 
+
+
 <p align="center">
 	<img border="1px" width="50%" src="./images/LVGL演示.gif"><img border="1px" width="50%" src="./images/手势识别测试.gif">
 </p>
-
 
 
