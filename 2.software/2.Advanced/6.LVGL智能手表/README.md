@@ -17,8 +17,6 @@ https://github.com/No-Chicken/OV-Watch
 <p align="center">
 	<img width="50%" src="./images/LVGL演示.gif">
 </p>
-
-
 <p align="center">
 	<img width="50%" src="./images/界面.jpg">
 </p>

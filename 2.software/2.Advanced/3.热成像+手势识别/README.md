@@ -1,12 +1,10 @@
 ## ***Thermal Camera Demo***
 
-该例程使用MLX90640ESF-BAA模块热成像模块，进行热成像在LCD上显示，同时使用keras框架训练了一个CNN模型进行手势识别。
+该例程使用MLX90640ESF-BAA模块热成像模块，进行热成像在LCD上显示，同时使用keras框架训练了一个CNN模型进行手势识别。动态效果演示图如下所示：
 
 <p align="center">
 	<img width="50%" src="./images/手势识别测试.gif">
 </p>
-
-
 ## 一、文件夹组成
 
 ```python
@@ -80,8 +78,6 @@ static uint8_t lcd_buf[LCD_Buf_Size];//able to store 32*8 * 6*8 pixes
 }
 ```
 
-
-
 ## 三、卷积神经网络搭建与部署
 
 ### 1、CNN搭建与训练
@@ -107,8 +103,6 @@ model = tf.keras.models.Sequential([
 
 model.summary()
 ```
-
-
 
 ### 2、CNN部署至STM32
 
