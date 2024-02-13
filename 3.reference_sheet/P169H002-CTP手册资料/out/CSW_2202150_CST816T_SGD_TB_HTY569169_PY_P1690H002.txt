@@ -1,0 +1,58 @@
+#########  协议版本v1.4  #########
+
+############ 烧录文件名 ###########
+hex_file = CSW_2202150_CST816T_SGD_TB_HTY569169_PY_P1690H002.hex
+chip_type = cst8xxt
+
+boot_force = disable
+
+############ 画线测试 ###########
+enter_read_point = 
+read_point = w 15 fe e0 p w 15 fa 80 p w 15 30 p r 15 x u8_i u8_i u8_i u8_i u8_i u8_i u8_i u8_i u8_i u8_i p
+
+############ TP配置参数 ###########
+x_res = 240
+y_res = 280
+key_num = 0
+sensor_num = 12
+rst_pin = enable
+irq_pin = enable
+
+//掉电等待时间
+poweroff_time = 50
+//上电初始化等待时间
+wait_time = 150
+
+//自动测试等待时间
+auto_test_time = 1000
+
+//中断测试等待时间
+irq_test_time = 1200
+
+############ 自动测试参数 ###########
+#enter_screen_idac_test = w 15 fe 6 p
+#read_idac = w 15 b0 p r 15 u16_i u16_i p w 15 40 p r 15 x u16_ p
+
+fpc_test = disable
+
+enter_screen_idac_test = w 15 fe 6 p w 15 C0 64 32 20 1 P w 15 ff 1 p
+read_idac = w 15 b0 p r 15 u16_i u16_i p w 15 40 p r 15 u16_ p
+
+test_cmod_max = 423 435
+test_cmod_min = 283 291
+screen_idac_list = 7609 8129 7344 7736 7081 8652 6821 7211 6556 6687
+test_cp_max = 8750 9348 8445 8896 8143 9949 7844 8292 7539 7690
+test_cp_min = 6468 6910 6243 6576 6019 7355 5798 6130 5573 5684
+test_vratio_max_list = 113 115 113 97 113 130 114 117 94 90
+test_vratio_min_list = 93 95 93 81 93 108 94 97 78 74
+test_hratio_max_list = 102 116 103 115 89 134 103 115 107 111
+test_hratio_min_list = 84 96 85 95 73 110 85 95 89 91
+//软件版本校验
+fw_version = 0x01
+get_fw_version = w 15 a9 p r 15 u8_r p
+
+
+############ 调试用命令 ###########
+read_rawdata = w 15 fe 6 p w 15 40 p r 15 x u16_ p
+read_diff = w 15 fe 7 p w 15 60 p r 15 x u16_ p
+
