@@ -67,7 +67,7 @@
 <div align=center>
 	<img src="./2.software/1.Basic/0.template/images/格式化.jpg" width="35%"/>
 </div>
-详细的细节详见例程：[模板例程](https://github.com/No-Chicken/FryPi/tree/master/2.software/1.Basic/0.template)。
+详细的细节详见例程：[模版工程](https://github.com/No-Chicken/FryPi/tree/master/2.software/1.Basic/0.template)项目。
 
 ## ✨贡献者
 
