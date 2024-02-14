@@ -25,6 +25,7 @@
 </p>
 
 
+
 <p align="center">
 	<a href="https://space.bilibili.com/34154740">bilibili主页 </a> |
 	<a href="https://www.bilibili.com/video/BV19g4y1N7YR/">演示视频 </a> |
@@ -67,7 +68,7 @@
 <div align=center>
 	<img src="./2.software/1.Basic/0.template/images/格式化.jpg" width="35%"/>
 </div>
-详细的细节详见例程：[模版工程](https://github.com/No-Chicken/FryPi/tree/master/2.software/1.Basic/0.template)项目。
+详细的细节详见例程：[模版工程](https://github.com/No-Chicken/FryPi/tree/master/2.software/1.Basic/0.template)。
 
 ## ✨贡献者
 
