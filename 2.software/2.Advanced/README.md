@@ -7,10 +7,13 @@
 <p align="center">
 	<img width="50%" src="./images/演示.gif">
 </p>
-
 <p align="center">
 	<img width="50%" src="./images/手势识别测试.gif">
 </p>
 <p align="center">
+    <img width="50%" src="./images/MNIST演示.gif">
+</p>
+<p align="center">
 	<img width="50%" src="./images/在环开发.jpg">
 </p>
+

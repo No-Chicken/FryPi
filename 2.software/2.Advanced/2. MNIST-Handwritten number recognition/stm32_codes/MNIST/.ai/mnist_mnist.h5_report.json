@@ -1,0 +1,376 @@
+{
+    "_allocate_inputs": 4,
+    "_allocate_outputs": 4,
+    "cli_parameters": "generate --name mnist -m C:/Users/kingham/Desktop/mnist.h5 --type keras --compression none --verbosity 1 --workspace C:\\Users\\kingham\\AppData\\Local\\Temp\\mxAI_workspace461375562380010943197897817939047 --output C:\\Users\\kingham\\.stm32cubemx\\network_output --allocate-inputs --series stm32f4 --allocate-outputs",
+    "cli_version": {
+        "major": 1,
+        "micro": 0,
+        "minor": 7
+    },
+    "cli_version_str": "1.7.0",
+    "code_size": 0,
+    "compression": {
+        "factor": null,
+        "layers": {}
+    },
+    "date_time": "Wed Feb  7 10:18:01 2024",
+    "error": 0,
+    "error_str": [],
+    "exec_cmd": "generate",
+    "exec_duration": 0.0,
+    "hash": "d8dc22729298a71e669c0baecb456d07",
+    "inputs": [
+        "input_0"
+    ],
+    "layers": [
+        {
+            "c_id": [
+                0,
+                1
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 3600,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        30,
+                        30,
+                        1,
+                        1
+                    ]
+                },
+                "rom_size": 312
+            },
+            "id": 0,
+            "inputs": [],
+            "name": "input_0",
+            "original": null,
+            "type": "Input"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 50703,
+                "n_params": 78,
+                "psize": 312,
+                "rom_output": {
+                    "c_size": 8112,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        26,
+                        26,
+                        3,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [
+                "input_0"
+            ],
+            "name": "conv2d_conv2d",
+            "original": "Conv2D",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 2028,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 8112,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        26,
+                        26,
+                        3,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [
+                "conv2d_conv2d"
+            ],
+            "name": "conv2d",
+            "original": "Conv2D",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                2
+            ],
+            "extras": {
+                "n_macc": 2028,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 2028,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        13,
+                        13,
+                        3,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 1,
+            "inputs": [
+                "conv2d"
+            ],
+            "name": "max_pooling2d",
+            "original": "MaxPooling2D",
+            "type": "Pool"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 2,
+            "inputs": [
+                "max_pooling2d"
+            ],
+            "name": "flatten",
+            "original": "Flatten",
+            "type": "Reshape"
+        },
+        {
+            "c_id": [
+                3,
+                4
+            ],
+            "extras": {
+                "n_macc": 16256,
+                "n_params": 16256,
+                "psize": 65024,
+                "rom_output": {
+                    "c_size": 128,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        32,
+                        1
+                    ]
+                },
+                "rom_size": 65024
+            },
+            "id": 3,
+            "inputs": [
+                "flatten"
+            ],
+            "name": "dense_dense",
+            "original": "Dense",
+            "type": "Dense"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 32,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 128,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        32,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 3,
+            "inputs": [
+                "dense_dense"
+            ],
+            "name": "dense",
+            "original": "Dense",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                5,
+                6
+            ],
+            "extras": {
+                "n_macc": 528,
+                "n_params": 528,
+                "psize": 2112,
+                "rom_output": {
+                    "c_size": 64,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        16,
+                        1
+                    ]
+                },
+                "rom_size": 2112
+            },
+            "id": 4,
+            "inputs": [
+                "dense"
+            ],
+            "name": "dense_1_dense",
+            "original": "Dense",
+            "type": "Dense"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 16,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 64,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        16,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 4,
+            "inputs": [
+                "dense_1_dense"
+            ],
+            "name": "dense_1",
+            "original": "Dense",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                7,
+                8
+            ],
+            "extras": {
+                "n_macc": 170,
+                "n_params": 170,
+                "psize": 680,
+                "rom_output": {
+                    "c_size": 40,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        10,
+                        1
+                    ]
+                },
+                "rom_size": 680
+            },
+            "id": 5,
+            "inputs": [
+                "dense_1"
+            ],
+            "name": "dense_2_dense",
+            "original": "Dense",
+            "type": "Dense"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 150,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 40,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        10,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 5,
+            "inputs": [
+                "dense_2_dense"
+            ],
+            "name": "dense_2",
+            "original": "Dense",
+            "type": "Nonlinearity"
+        }
+    ],
+    "model_files": [
+        "C:\\Users\\kingham\\Desktop\\mnist.h5"
+    ],
+    "model_n_params": 17032,
+    "model_name": "mnist",
+    "model_size": 68128,
+    "model_type": "keras",
+    "name": "mnist",
+    "outputs": [
+        "dense_2"
+    ],
+    "ram_io_size": [
+        3600,
+        40
+    ],
+    "ram_size": [
+        9264,
+        9264
+    ],
+    "report_version": 1.1,
+    "rom_cfact": 1.0,
+    "rom_heap_inspector": 2048,
+    "rom_inputs": [
+        {
+            "c_size": 3600,
+            "c_type": "float",
+            "name": "input_0"
+        }
+    ],
+    "rom_n_macc": 71911,
+    "rom_outputs": [
+        {
+            "c_size": 40,
+            "c_type": "float",
+            "name": "dense_2"
+        }
+    ],
+    "rom_size": 68128,
+    "strategy": "heap_overlay",
+    "tools_api_version": {
+        "major": 1,
+        "micro": 0,
+        "minor": 7
+    },
+    "tools_version": {
+        "extra": "19520",
+        "major": 8,
+        "micro": 0,
+        "minor": 1
+    },
+    "val_error": -1.0,
+    "val_error_desc": "None (None) #-1",
+    "val_metrics": []
+}

@@ -1,0 +1,146 @@
+Neural Network Tools for STM32AI v1.6.0 (STM.ai v7.3.0-RC5)
+Created date          : 2023-12-17 14:25:55
+Parameters            : generate --name network_sine -m E:/projects/Github_Projects/FryPie-F411DevKit/2.software/2.Improve-chapter/1.CubeAI工具使用/python_code/sine_calcu.tflite --type tflite --compression none --verbosity 1 --workspace C:\Users\kingham\AppData\Local\Temp\mxAI_workspace19222026433700644460896037414206 --output C:\Users\kingham\.stm32cubemx\network_output --allocate-inputs --allocate-outputs
+
+Exec/report summary (generate)
+---------------------------------------------------------------------------------------------------------------------------------------------
+model file         :   E:\projects\Github_Projects\FryPie-F411DevKit\2.software\2.Improve-chapter\1.CubeAI工具使用\python_code\sine_calcu.tflite
+type               :   tflite                                                                                                               
+c_name             :   network_sine                                                                                                         
+compression        :   none                                                                                                                 
+options            :   allocate-inputs, allocate-outputs                                                                                    
+optimization       :   balanced                                                                                                             
+target/series      :   generic                                                                                                              
+workspace dir      :   C:\Users\kingham\AppData\Local\Temp\mxAI_workspace19222026433700644460896037414206                                   
+output dir         :   C:\Users\kingham\.stm32cubemx\network_output                                                                         
+model_fmt          :   float                                                                                                                
+model_name         :   sine_calcu                                                                                                           
+model_hash         :   f9de989312bc10b6e523e690d78b601e                                                                                     
+params #           :   81 items (324 B)                                                                                                     
+---------------------------------------------------------------------------------------------------------------------------------------------
+input 1/1          :   'serving_default_dense_input0' (domain:activations/**default**)                                                      
+                   :   1 items, 4 B, ai_float, float, (1,1,1,1)                                                                             
+output 1/1         :   'dense_4' (domain:activations/**default**)                                                                           
+                   :   1 items, 4 B, ai_float, float, (1,1,1,1)                                                                             
+macc               :   231                                                                                                                  
+weights (ro)       :   324 B (324 B) (1 segment)                                                                                            
+activations (rw)   :   60 B (60 B) (1 segment) *                                                                                            
+ram (total)        :   60 B (60 B) = 60 + 0 + 0                                                                                             
+---------------------------------------------------------------------------------------------------------------------------------------------
+(*) 'input'/'output' buffers can be used from the activations buffer
+
+Model name - sine_calcu ['serving_default_dense_input0'] ['dense_4']
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+id   layer (type,original)                    oshape       param/size   macc   connected to                   |   c_size         c_macc         c_type          
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+0    serving_default_dense_input0 (Input, )   [b:1,c:1]                                                       |   +80(+100.0%)   +20(+100.0%)   dense_of32[0]   
+     dense_0 (Dense, FULLY_CONNECTED)         [b:1,c:10]   20/80        20     serving_default_dense_input0   |   -80(-100.0%)   -20(-100.0%)  
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+1    nl_1 (Nonlinearity, TANH)                [b:1,c:10]                100    dense_0                        |                                 nl_of32[1]      
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+2    dense_2 (Dense, FULLY_CONNECTED)         [b:1,c:5]    55/220       55     nl_1                           |                                 dense_of32[2]   
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+3    nl_3 (Nonlinearity, TANH)                [b:1,c:5]                 50     dense_2                        |                                 nl_of32[3]      
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+4    dense_4 (Dense, FULLY_CONNECTED)         [b:1,c:1]    6/24         6      nl_3                           |                                 dense_of32[o][4]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+model/c-model: macc=231/231  weights=324/324  activations=--/60 io=--/0
+
+
+
+Generated C-graph summary
+------------------------------------------------------------------------------------------------------------------------
+model name            : sine_calcu
+c-name                : network_sine
+c-node #              : 5
+c-array #             : 12
+activations size      : 60 (1 segment)
+weights size          : 324 (1 segment)
+macc                  : 231
+inputs                : ['serving_default_dense_input0_output']
+outputs               : ['dense_4_output']
+
+C-Arrays (12)
+-------------------------------------------------------------------------------------------------------------------
+c_id   name (*_array)                        item/size   domain/mem-pool           c-type        fmt       comment
+-------------------------------------------------------------------------------------------------------------------
+0      serving_default_dense_input0_output   1/4         activations/**default**   float         float32   /input 
+1      dense_4_weights                       5/20        weights/weights           const float   float32          
+2      dense_0_output                        10/40       activations/**default**   float         float32          
+3      nl_1_output                           10/40       activations/**default**   float         float32          
+4      dense_4_bias                          1/4         weights/weights           const float   float32          
+5      dense_2_output                        5/20        activations/**default**   float         float32          
+6      nl_3_output                           5/20        activations/**default**   float         float32          
+7      dense_4_output                        1/4         activations/**default**   float         float32   /output
+8      dense_0_weights                       10/40       weights/weights           const float   float32          
+9      dense_0_bias                          10/40       weights/weights           const float   float32          
+10     dense_2_weights                       50/200      weights/weights           const float   float32          
+11     dense_2_bias                          5/20        weights/weights           const float   float32          
+-------------------------------------------------------------------------------------------------------------------
+
+C-Layers (5)
+-----------------------------------------------------------------------------------------------------------------
+c_id   name (*_layer)   id   layer_type   macc   rom   tensors                                  shape (array id)
+-----------------------------------------------------------------------------------------------------------------
+0      dense_0          0    dense        20     80    I: serving_default_dense_input0_output   (1,1,1,1) (0)   
+                                                       W: dense_0_weights                       (1,1,1,10) (8)  
+                                                       W: dense_0_bias                          (1,1,1,10) (9)  
+                                                       O: dense_0_output                        (1,1,1,10) (2)  
+-----------------------------------------------------------------------------------------------------------------
+1      nl_1             1    nl           100    0     I: dense_0_output                        (1,1,1,10) (2)  
+                                                       O: nl_1_output                           (1,1,1,10) (3)  
+-----------------------------------------------------------------------------------------------------------------
+2      dense_2          2    dense        55     220   I: nl_1_output                           (1,1,1,10) (3)  
+                                                       W: dense_2_weights                       (10,1,1,5) (10) 
+                                                       W: dense_2_bias                          (1,1,1,5) (11)  
+                                                       O: dense_2_output                        (1,1,1,5) (5)   
+-----------------------------------------------------------------------------------------------------------------
+3      nl_3             3    nl           50     0     I: dense_2_output                        (1,1,1,5) (5)   
+                                                       O: nl_3_output                           (1,1,1,5) (6)   
+-----------------------------------------------------------------------------------------------------------------
+4      dense_4          4    dense        6      24    I: nl_3_output                           (1,1,1,5) (6)   
+                                                       W: dense_4_weights                       (5,1,1,1) (1)   
+                                                       W: dense_4_bias                          (1,1,1,1) (4)   
+                                                       O: dense_4_output                        (1,1,1,1) (7)   
+-----------------------------------------------------------------------------------------------------------------
+
+
+
+Number of operations per c-layer
+------------------------------------------------------------------------------------------
+c_id    m_id   name (type)       #op (type)                       #param (sparsity)      
+------------------------------------------------------------------------------------------
+0       0      dense_0 (dense)                20 (smul_f32_f32)               20 (0.0000)
+1       1      nl_1 (nl)                     100 (op_f32_f32)                            
+2       2      dense_2 (dense)                55 (smul_f32_f32)               55 (0.0000)
+3       3      nl_3 (nl)                      50 (op_f32_f32)                            
+4       4      dense_4 (dense)                 6 (smul_f32_f32)                6 (0.0000)
+------------------------------------------------------------------------------------------
+total                                        231                              81 (0.0000)
+
+  Number of operation types
+  ---------------------------------------------
+  smul_f32_f32                  81       35.1%
+  op_f32_f32                   150       64.9%
+
+Complexity report (model)
+-----------------------------------------------------------------------------------------------
+m_id   name                           c_macc                    c_rom                     c_id
+-----------------------------------------------------------------------------------------------
+0      serving_default_dense_input0   ||||               8.7%   ||||||            24.7%   [0] 
+1      nl_1                           ||||||||||||||||  43.3%   |                  0.0%   [1] 
+2      dense_2                        |||||||||         23.8%   ||||||||||||||||  67.9%   [2] 
+3      nl_3                           ||||||||          21.6%   |                  0.0%   [3] 
+4      dense_4                        |                  2.6%   ||                 7.4%   [4] 
+-----------------------------------------------------------------------------------------------
+macc=231 weights=324 act=60 ram_io=0
+
+Generated files (7)
+---------------------------------------------------------------------------------
+C:\Users\kingham\.stm32cubemx\network_output\network_sine_config.h
+C:\Users\kingham\.stm32cubemx\network_output\network_sine.h
+C:\Users\kingham\.stm32cubemx\network_output\network_sine.c
+C:\Users\kingham\.stm32cubemx\network_output\network_sine_data_params.h
+C:\Users\kingham\.stm32cubemx\network_output\network_sine_data_params.c
+C:\Users\kingham\.stm32cubemx\network_output\network_sine_data.h
+C:\Users\kingham\.stm32cubemx\network_output\network_sine_data.c
