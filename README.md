@@ -43,7 +43,7 @@
 
   - MCU使用STM32F411RET6，Cortex-M4 core with DSP and FPU，512 Kbytes of Flash memory, 100 MHz CPU, ART Accelerator，.
   - 可额外焊接外置SPI Flash.
-  - 例程丰富：[智能手表](https://github.com/No-Chicken/FryPi/tree/master/2.software/2.Advanced/6.LVGL%E6%99%BA%E8%83%BD%E6%89%8B%E8%A1%A8)，[热成像手势识别](https://github.com/No-Chicken/FryPi/tree/master/2.software/2.Advanced/3.%E7%83%AD%E6%88%90%E5%83%8F%2B%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB)，[手写数字识别](https://github.com/No-Chicken/FryPi/tree/master/2.software/2.Advanced/2.%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%ABMNIST)，与matlab联合开发，[simulink在环开发](https://github.com/No-Chicken/FryPi/tree/master/2.software/2.Advanced/5.simulink%E8%81%94%E5%90%88%E5%BC%80%E5%8F%91)等等.
+  - 例程丰富：[智能手表](https://github.com/No-Chicken/FryPi/tree/master/2.software/2.Advanced/6.LVGL%20SmartWatch)，[热成像手势识别](https://github.com/No-Chicken/FryPi/tree/master/2.software/2.Advanced/3.Thermal%20camera%20gesture%20recognition)，[手写数字识别](https://github.com/No-Chicken/FryPi/tree/master/2.software/2.Advanced/2.%20MNIST-Handwritten%20number%20recognition)，与matlab联合开发，[simulink在环开发](https://github.com/No-Chicken/FryPi/tree/master/2.software/2.Advanced/5.simulink%20Co-develope)等等.
   - 留有端口可外接扩展板.（例如最上面的演示动态图，就是在Core板插上Cam扩展板）
   - 有双TypeC和单TypeC版本的Core板.
   - 
