@@ -67,8 +67,6 @@ If the TypecC connected to the USB of the development board is connected to the 
 <div align=center>
 	<img src="./2.software/1.Basic/0.template/images/格式化.jpg" width="35%"/>
 </div>
-Details can be found in the demo: [template project](https://github.com/No-Chicken/FryPi/tree/master/2.software/1.Basic/0.template).
-
 ## ✨Contributors
 
 <table>
