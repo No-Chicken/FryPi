@@ -14,11 +14,13 @@
 <h3 align="center">STM32F411RET6 DevKit</h3>
 
 <p align="center">
-	<img border="1px" width="50%" src="./images/LVGL演示.gif"><img border="1px" width="50%" src="./images/手势识别测试.gif">
+	<img style="border: 2px solid #ccc; border-radius: 30px; padding: 0px;" width="50%" src="./2.software/2.Advanced/6.LVGL-SmartWatch/images/LVGL演示.gif"><img style="border: 2px solid #ccc; border-radius: 30px; padding: 0px;" width="50%" src="./2.software/2.Advanced/3.Thermal-camera-gesture-recognition/images/手势识别演示.gif">
 </p>
 <p align="center">
-	<img border="1px" width="50%" src="./images/MNIST演示.gif"><img border="1px" width="50%" src="./images/在环开发.jpg">
+	<img style="border: 2px solid #ccc; border-radius: 30px; padding: 0px;" width="50%" src="./2.software/2.Advanced/2.MNIST-Handwritten-number-recognition/images/MNIST演示.gif"><img style="border: 2px solid #ccc; border-radius: 30px; padding: 0px;" width="50%" src="./images/在环开发.jpg">
 </p>
+
+
 
 
 <p align="center">
@@ -33,9 +35,8 @@
 This is a STM32F411RET6 mini development board, which can be used for AI development, UI development, digital power control board, etc. And can even be used for your other projects.
 
 <p align="center">
-	<img width="25%" src="./images/Core_V1.1后视图.jpg"><img width="25%" src="./images/Core_V1.1前视图.jpg"><img width="50%" src="./images/核心板.jpg">
+	<img style="border: 0px solid #ccc; border-radius: 20px; padding: 0px;" width="30%" src="./images/Core_V1.1后视图.jpg"><img style="border: 0px solid #ccc; border-radius: 20px; padding: 0px;" width="30%" src="./images/Core_V1.1前视图.jpg">
 </p>
-
 The original purpose of making this board is because of the previous smartwatch project [OV-Watch](https://github.com/No-Chicken/OV-Watch)，many copy people said that the device is very difficult to weld, secondary development is not convenient, In addition, I also plan to deploy some AI-related things on STM32 and do a tutorial, so the FryPi fried chicken pie was born. This development board is not only suitable for beginners, but also for advanced developers, and advanced demos may require a certain knowledge reserve.
 
 ## :rocket: Features
@@ -51,19 +52,14 @@ The original purpose of making this board is because of the previous smartwatch 
 After the development board is welded, once the [template demo](https://github.com/No-Chicken/FryPi/tree/master/2.software/1.Basic/0.template) is donloaded, if there is no problem with the hardware, the phenomenon is: then the TypeC corresponding to the serial port is connected to the computer, L2 will blink, press the Key to switch mode, L2 blink frequency will change, and the upper PC will receive the mode information;
 
 <div align=center>
-	<img width="50%" src="./2.software/1.Basic/0.template/images/开机测试.gif" />
-</div>
-
-<div align=center>
-	<img src="./2.software/1.Basic/0.template/images/上位机.jpg" alt="上位机" style="zoom:80%;" />
+	<img style="border: 2px solid #ccc; border-radius: 30px; padding: 0px;" width="50%" src="./2.software/1.Basic/0.template/images/开机测试.gif" /><img style="border: 2px solid #ccc; border-radius: 20px; padding: 0px;" src="./2.software/1.Basic/0.template/images/上位机.jpg" width="24%"/>
 </div>
 
 If the TypecC connected to the USB of the development board is connected to the computer, the computer will appear formatted U disk, and then after formatting, it will simulate a U disk.
 
 <div align=center>
-	<img src="./2.software/1.Basic/0.template/images/格式化.jpg" alt="格式化" style="zoom:80%;" />
+	<img src="./2.software/1.Basic/0.template/images/格式化.jpg" width="35%"/>
 </div>
-
 Details can be found in the demo: [template demo](https://github.com/No-Chicken/FryPi/tree/master/2.software/1.Basic/0.template).
 
 ## ✨Contributors
