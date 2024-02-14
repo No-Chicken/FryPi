@@ -26,6 +26,7 @@
 
 
 
+
 <p align="center">
 	<a href="https://space.bilibili.com/34154740">Bilibili </a> |
 	<a href="https://www.bilibili.com/video/BV19g4y1N7YR/">video </a> |
@@ -67,6 +68,33 @@ If the TypecC connected to the USB of the development board is connected to the 
 <div align=center>
 	<img src="./2.software/1.Basic/0.template/images/格式化.jpg" width="35%"/>
 </div>
+
+
+## :memo:Demo Directory
+
+demos are divided into Basic  and Advanced part as shown in the following directory.
+
+- [Basic](./2.software/1.Basic)
+  - [0.template](./2.software/1.Basic/0.template)
+  - [1.GPIO](./2.software/1.Basic/1.GPIO)
+  - [2.USART](./2.software/1.Basic/2.USART)
+  - [3.TIM](./2.software/1.Basic/3.TIM)
+  - [4.PWM](./2.software/1.Basic/4.PWM)
+  - [5.ADC](./2.software/1.Basic/5.ADC)
+  - [6.SPI](./2.software/1.Basic/6.SPI)
+  - [7.LCD](./2.software/1.Basic/7.LCD)
+  - ...todo
+- [Advanced](./2.software/2.Advanced)
+  - [0.FreeRTOS template](./2.software/2.Advanced/0.FreeRTOS)
+  - [1.How to use CubeAI](./2.software/2.Advanced/1.CubeAI)
+  - [2.MNIST Handwritten number recognition](./2.software/2.Advanced/2.MNIST-Handwritten-number-recognition)
+  - [3.Thermal camera gesture recognition](./2.software/2.Advanced/3.Thermal-camera-gesture-recognition)
+  - [4.How to VScode EIDE](./2.software/2.Advanced/4.VScode-EIDE-build)
+  - [5.simulink Co-develope](./2.software/2.Advanced/5.simulink-Co-develope)
+  - [6.LVGL Smart Watch](./2.software/2.Advanced/6.LVGL-SmartWatch)
+  - [7.OV2640 camera & face recognition](./2.software/2.Advanced/7.OV2640-recognition)
+  - ...todo
+
 ## ✨Contributors
 
 <table>

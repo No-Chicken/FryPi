@@ -68,6 +68,33 @@
 <div align=center>
 	<img src="./2.software/1.Basic/0.template/images/格式化.jpg" width="35%"/>
 </div>
+
+
+## :memo:例程目录
+
+例程demo如下目录所示，分为基础例程Basic，和高级例程Advanced。
+
+- [Basic](./2.software/1.Basic)
+  - [0.template](./2.software/1.Basic/0.template)
+  - [1.GPIO](./2.software/1.Basic/1.GPIO)
+  - [2.USART](./2.software/1.Basic/2.USART)
+  - [3.TIM](./2.software/1.Basic/3.TIM)
+  - [4.PWM](./2.software/1.Basic/4.PWM)
+  - [5.ADC](./2.software/1.Basic/5.ADC)
+  - [6.SPI](./2.software/1.Basic/6.SPI)
+  - [7.LCD](./2.software/1.Basic/7.LCD)
+  - ...todo
+- [Advanced](./2.software/2.Advanced)
+  - [0.FreeRTOS模板](./2.software/2.Advanced/0.FreeRTOS)
+  - [1.如何使用CubeAI](./2.software/2.Advanced/1.CubeAI)
+  - [2.手写数字识别](./2.software/2.Advanced/2.MNIST-Handwritten-number-recognition)
+  - [3.热成像手势识别](./2.software/2.Advanced/3.Thermal-camera-gesture-recognition)
+  - [4.使用VScode EIDE插件](./2.software/2.Advanced/4.VScode-EIDE-build)
+  - [5.simulink在环开发](./2.software/2.Advanced/5.simulink-Co-develope)
+  - [6.LVGL智能手表](./2.software/2.Advanced/6.LVGL-SmartWatch)
+  - [7.OV2640摄像头+识别](./2.software/2.Advanced/7.OV2640-recognition)
+  - ...todo
+
 ## ✨贡献者
 
 <table>
