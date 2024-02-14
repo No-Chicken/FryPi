@@ -3,8 +3,8 @@
  * Auto generated Run-Time-Environment Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'MNIST' 
- * Target:  'MNIST' 
+ * Project: 'ThermalCamera' 
+ * Target:  'ThermalCamera' 
  */
 
 #ifndef RTE_COMPONENTS_H

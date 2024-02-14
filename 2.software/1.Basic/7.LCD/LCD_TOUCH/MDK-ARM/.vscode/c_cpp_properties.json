@@ -1,26 +1,22 @@
 {
     "configurations": [
         {
-            "name": "MNIST",
+            "name": "ThermalCamera",
             "includePath": [
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\X-CUBE-AI\\App",
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\X-CUBE-AI",
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\X-CUBE-AI\\Target",
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\Core\\Inc",
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\Middlewares\\ST\\AI\\Inc",
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\Drivers\\STM32F4xx_HAL_Driver\\Inc",
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\Drivers\\STM32F4xx_HAL_Driver\\Inc\\Legacy",
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\Drivers\\CMSIS\\Include",
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\SYSTEM",
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\BSP\\IIC",
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\BSP\\KEY",
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\BSP\\LCD",
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\BSP\\TOUCH",
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\MDK-ARM",
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\Core\\Src",
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\Drivers\\STM32F4xx_HAL_Driver\\Src",
-                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\MNIST\\Middlewares\\ST\\AI\\Lib"
+                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\LCD_TOUCH\\Core\\Inc",
+                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\LCD_TOUCH\\Drivers\\STM32F4xx_HAL_Driver\\Inc",
+                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\LCD_TOUCH\\Drivers\\STM32F4xx_HAL_Driver\\Inc\\Legacy",
+                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\LCD_TOUCH\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
+                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\LCD_TOUCH\\Drivers\\CMSIS\\Include",
+                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\LCD_TOUCH\\BSP\\LCD",
+                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\LCD_TOUCH\\BSP\\mlx90640",
+                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\LCD_TOUCH\\SYSTEM",
+                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\LCD_TOUCH\\BSP\\IIC",
+                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\LCD_TOUCH\\BSP\\TOUCH",
+                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\LCD_TOUCH\\BSP\\KEY",
+                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\LCD_TOUCH\\MDK-ARM",
+                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\LCD_TOUCH\\Core\\Src",
+                "e:\\projects\\programs\\STM32_Programs\\F411_programs\\F411RET6\\LCD_TOUCH\\Drivers\\STM32F4xx_HAL_Driver\\Src"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

@@ -18,10 +18,10 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "crc.h"
+#include "i2c.h"
 #include "spi.h"
+#include "usart.h"
 #include "gpio.h"
-#include "app_x-cube-ai.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -31,7 +31,6 @@
 #include "lcd_init.h"
 #include "CST816.h"
 #include "key.h"
-#include "user_ai_run.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -126,13 +125,12 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_I2C3_Init();
   MX_SPI1_Init();
-  MX_CRC_Init();
-  MX_X_CUBE_AI_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
 	delay_init();
-	
 	LCD_Init();
 	LCD_Fill(0,0,LCD_W,LCD_H,BLACK);
 	LCD_ShowString(LCD_W/2-40,LCD_H/2,(uint8_t*)"Welcome!",WHITE,BLACK,24,0);//12*6,16*8,24*12,32*16
@@ -144,14 +142,12 @@ int main(void)
 	
 	Key_Port_Init();
 	
-  static uint8_t reg_state = 0;
-  
   // 原始图片数据
   static uint8_t originalImage[ORIGINAL_SIZE];
   memset(originalImage, 0, ORIGINAL_SIZE);
   // 压缩后图片数据
   static float compressedImage[COMPRESSED_SIZE];
-  memset(compressedImage, 0.0, COMPRESSED_SIZE);
+  memset(compressedImage, 0, COMPRESSED_SIZE);
 
   /* USER CODE END 2 */
 
@@ -161,30 +157,27 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-    //MX_X_CUBE_AI_Process();
     /* USER CODE BEGIN 3 */
-		if(CST816_Get_FingerNum()!=0x00 && CST816_Get_FingerNum()!=0xFF)
+		
+    if(CST816_Get_FingerNum()!=0x00 && CST816_Get_FingerNum()!=0xFF)
 		{
-      if(!reg_state)
+			CST816_Get_XY_AXIS();
+			if(CST816_Instance.X_Pos > SCALL_RATE/2 && CST816_Instance.Y_Pos > SCALL_RATE/2)
       {
-        CST816_Get_XY_AXIS();
-        if(CST816_Instance.X_Pos > SCALL_RATE/2 && CST816_Instance.Y_Pos > SCALL_RATE/2)
+        for(uint8_t i=0; i<SCALL_RATE; i++)
         {
-          for(uint8_t i=0; i<SCALL_RATE; i++)
+          for(uint8_t j = 0; j < SCALL_RATE; j++)
           {
-            for(uint8_t j = 0; j < SCALL_RATE; j++)
-            {
-              originalImage[(CST816_Instance.X_Pos - SCALL_RATE/2 + j) + (CST816_Instance.Y_Pos - SCALL_RATE/2 + i)*240] = 0xFF;
-            }
+            originalImage[(CST816_Instance.X_Pos - SCALL_RATE/2 + j) + (CST816_Instance.Y_Pos - SCALL_RATE/2 + i)*240] = 0xFF;
           }
-          LCD_Fill(CST816_Instance.X_Pos - SCALL_RATE/2, CST816_Instance.Y_Pos - SCALL_RATE/2,
-                  CST816_Instance.X_Pos + SCALL_RATE/2, CST816_Instance.Y_Pos + SCALL_RATE/2, BLACK);
         }
-      }	
+        LCD_Fill(CST816_Instance.X_Pos - SCALL_RATE/2, CST816_Instance.Y_Pos - SCALL_RATE/2,
+								CST816_Instance.X_Pos + SCALL_RATE/2, CST816_Instance.Y_Pos + SCALL_RATE/2, BLACK);
+      }
 		}
 		if(KeyScan(0))
 		{
-      
+      static uint8_t reg_state = 0;
       if(reg_state == 1)
       {reg_state = 0;}
       else
@@ -195,15 +188,8 @@ int main(void)
         downsample(originalImage, compressedImage);
 				
         //recongniztion
-        float outputs[10]; //0~9
-				user_ai_run(compressedImage, outputs);
-        uint8_t number;
-        number = findMaxIndex(outputs, 10);
-        printf("the number is: %d\r\n", number);
-        uint8_t strbuf[10];
-        sprintf(strbuf, "number:%d", number);
-        LCD_ShowString(60, 260, strbuf, WHITE, BLACK, 32, 0);
-        
+				
+				
         //clear mem
         memset(originalImage, 0, sizeof(originalImage));
         memset(compressedImage, 0.0, sizeof(compressedImage));
@@ -212,7 +198,6 @@ int main(void)
       {
         //clear lcd
 			  LCD_Fill(0,0,LCD_W,LCD_H-40,WHITE);
-        LCD_Fill(0,LCD_H-40,LCD_W,LCD_H,BLACK);
 				
       }
       HAL_GPIO_TogglePin(LED_T_GPIO_Port,LED_T_Pin);

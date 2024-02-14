@@ -16,8 +16,5 @@
             "command": "extension.execute",
             "priority": 4
         }
-    ],
-    "files.associations": {
-        "user_ai_run.h": "c"
-    }
+    ]
 }
