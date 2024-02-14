@@ -14,11 +14,17 @@
 <h3 align="center">STM32F411RET6 DevKit</h3>
 
 <p align="center">
-	<img border="1px" width="50%" src="./images/LVGL演示.gif"><img border="1px" width="50%" src="./images/手势识别测试.gif">
+	<img width="45%" src="./images/LVGL演示.gif">
+    &nbsp;
+    <img width="45%" src="./images/手势识别演示.gif">
 </p>
 <p align="center">
-	<img border="1px" width="50%" src="./images/MNIST演示.gif"><img border="1px" width="50%" src="./images/在环开发.jpg">
+	<img width="45%" src="./images/MNIST演示.gif">
+    &nbsp;
+    <img width="45%" src="./images/在环开发.jpg">
 </p>
+
+
 
 
 <p align="center">
@@ -33,7 +39,9 @@
 This is a STM32F411RET6 mini development board, which can be used for AI development, UI development, digital power control board, etc. And can even be used for your other projects.
 
 <p align="center">
-	<img width="25%" src="./images/Core_V1.1后视图.jpg"><img width="25%" src="./images/Core_V1.1前视图.jpg"><img width="50%" src="./images/核心板.jpg">
+	<img width="30%" src="./images/Core_V1.1后视图.png">
+    &nbsp;
+    <img width="30%" src="./images/Core_V1.1前视图.png">
 </p>
 
 The original purpose of making this board is because of the previous smartwatch project [OV-Watch](https://github.com/No-Chicken/OV-Watch)，many copy people said that the device is very difficult to weld, secondary development is not convenient, In addition, I also plan to deploy some AI-related things on STM32 and do a tutorial, so the FryPi fried chicken pie was born. This development board is not only suitable for beginners, but also for advanced developers, and advanced demos may require a certain knowledge reserve.
@@ -51,20 +59,41 @@ The original purpose of making this board is because of the previous smartwatch 
 After the development board is welded, once the [template demo](https://github.com/No-Chicken/FryPi/tree/master/2.software/1.Basic/0.template) is donloaded, if there is no problem with the hardware, the phenomenon is: then the TypeC corresponding to the serial port is connected to the computer, L2 will blink, press the Key to switch mode, L2 blink frequency will change, and the upper PC will receive the mode information;
 
 <div align=center>
-	<img width="50%" src="./2.software/1.Basic/0.template/images/开机测试.gif" />
+	<img  width="50%" src="./2.software/1.Basic/0.template/images/开机测试.gif" />
+    &nbsp;
+    <img src="./2.software/1.Basic/0.template/images/上位机.jpg" width="24%"/>
 </div>
-
-<div align=center>
-	<img src="./2.software/1.Basic/0.template/images/上位机.jpg" alt="上位机" style="zoom:80%;" />
-</div>
-
 If the TypecC connected to the USB of the development board is connected to the computer, the computer will appear formatted U disk, and then after formatting, it will simulate a U disk.
 
 <div align=center>
-	<img src="./2.software/1.Basic/0.template/images/格式化.jpg" alt="格式化" style="zoom:80%;" />
+	<img src="./2.software/1.Basic/0.template/images/格式化.jpg" width="35%"/>
 </div>
 
-Details can be found in the demo: [template demo](https://github.com/No-Chicken/FryPi/tree/master/2.software/1.Basic/0.template).
+
+## :memo:Demo Directory
+
+demos are divided into Basic  and Advanced part as shown in the following directory.
+
+- [Basic](./2.software/1.Basic)
+  - [0.template](./2.software/1.Basic/0.template)
+  - [1.GPIO](./2.software/1.Basic/1.GPIO)
+  - [2.USART](./2.software/1.Basic/2.USART)
+  - [3.TIM](./2.software/1.Basic/3.TIM)
+  - [4.PWM](./2.software/1.Basic/4.PWM)
+  - [5.ADC](./2.software/1.Basic/5.ADC)
+  - [6.SPI](./2.software/1.Basic/6.SPI)
+  - [7.LCD](./2.software/1.Basic/7.LCD)
+  - ...todo
+- [Advanced](./2.software/2.Advanced)
+  - [0.FreeRTOS template](./2.software/2.Advanced/0.FreeRTOS)
+  - [1.How to use CubeAI](./2.software/2.Advanced/1.CubeAI)
+  - [2.MNIST Handwritten number recognition](./2.software/2.Advanced/2.MNIST-Handwritten-number-recognition)
+  - [3.Thermal camera gesture recognition](./2.software/2.Advanced/3.Thermal-camera-gesture-recognition)
+  - [4.How to VScode EIDE](./2.software/2.Advanced/4.VScode-EIDE-build)
+  - [5.simulink Co-develope](./2.software/2.Advanced/5.simulink-Co-develope)
+  - [6.LVGL Smart Watch](./2.software/2.Advanced/6.LVGL-SmartWatch)
+  - [7.OV2640 camera & face recognition](./2.software/2.Advanced/7.OV2640-recognition)
+  - ...todo
 
 ## ✨Contributors
 

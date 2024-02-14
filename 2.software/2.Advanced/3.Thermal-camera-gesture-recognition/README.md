@@ -3,8 +3,9 @@
 该例程使用MLX90640ESF-BAA模块热成像模块，进行热成像在LCD上显示，同时使用keras框架训练了一个CNN模型进行手势识别。动态效果演示图如下所示：
 
 <p align="center">
-	<img width="50%" src="./images/手势识别测试.gif">
+	<img width="50%" src="./images/手势识别演示.gif">
 </p>
+
 ## 一、文件夹组成
 
 ```python
