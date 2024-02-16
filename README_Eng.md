@@ -43,6 +43,8 @@ This is a STM32F411RET6 mini development board, which can be used for AI develop
     &nbsp;
     <img width="30%" src="./images/Core_V1.1前视图.png">
 </p>
+
+
 The original purpose of making this board is because of the previous smartwatch project [OV-Watch](https://github.com/No-Chicken/OV-Watch)，many copy people said that the device is very difficult to weld, secondary development is not convenient, In addition, I also plan to deploy some AI-related things on STM32 and do a tutorial, so the FryPi fried chicken pie was born. This development board is not only suitable for beginners, but also for advanced developers, and advanced demos may require a certain knowledge reserve.
 
 Also, the reason for choosing this MCU is also because the STM32F411REU6 can perfectly replace the CEU6 of the original smart watch project, and there are F411 hardware options in simulink.
