@@ -32,8 +32,6 @@
 </p>
 
 
-
-
 ## :ledger: 简介
 
 这是一个比手掌还小的STM32F411RET6迷你开发板，可以用于AI开发，UI开发，数字电源控制板等等，甚至可以拿去用于你的毕业设计和其他相关的项目。
@@ -60,6 +58,11 @@
   - 例程丰富：高级例程：[智能手表](https://github.com/No-Chicken/FryPi/tree/master/2.software/2.Advanced/6.LVGL-SmartWatch)，[热成像手势识别](https://github.com/No-Chicken/FryPi/tree/master/2.software/2.Advanced/3.Thermal-camera-gesture-recognition)，[手写数字识别](https://github.com/No-Chicken/FryPi/tree/master/2.software/2.Advanced/2.%20MNIST-Handwritten-number-recognition)，与matlab联合开发，[simulink在环开发](https://github.com/No-Chicken/FryPi/tree/master/2.software/2.Advanced/5.simulink-Co-develope)等等.
   - 留有端口可外接扩展板.（例如最上面的演示动态图，都是在Core板插上Cam扩展板）
   - 有双TypeC和单TypeC版本的Core板.
+  - FryPi的pin map如下所示，目前仅有一部分IO口被用到LCD和触摸屏等外设.
+
+<p align="center">
+	<img width="60%" src="./images/frypi-pin-map.jpg">
+</p>
 
 ## :package: 开机测试
 

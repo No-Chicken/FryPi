@@ -59,6 +59,11 @@ Also, the reason for choosing this MCU is also because the STM32F411REU6 can per
   - Rich Demo: [smart watch](https://github.com/No-Chicken/FryPi/tree/master/2.software/2.Advanced/6.LVGL-SmartWatch), [thermal gesture recognition](https://github.com/No-Chicken/FryPi/tree/master/2.software/2.Advanced/3.Thermal-camera-gesture-recognition), [handwritten number recognition](https://github.com/No-Chicken/FryPi/tree/master/2.software/2.Advanced/2.%20MNIST-Handwritten-number-recognition), develop with matlab, [simulink HIL development](https://github.com/No-Chicken/FryPi/tree/master/2.software/2.Advanced/5.simulink-Co-develope) and so on.
   - Leave the port for external expansion board. (For example, the top demo .gif showed is pluged the Cam expansion board into the Core board)
   - There are dual TypeC and single TypeC versions of the Core board.
+  - The pin map of the FryPi is shown as follows. At present, only few I/O ports are used for LCD and touch screen, etc. 
+
+<p align="center">
+	<img width="60%" src="./images/frypi-pin-map.jpg">
+</p>
 
 ## :package: Get Started
 
