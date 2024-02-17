@@ -62,8 +62,9 @@ Also, the reason for choosing this MCU is also because the STM32F411REU6 can per
   - The pin map of the FryPi is shown as follows. At present, only few I/O ports are used for LCD and touch screen, etc. 
 
 <p align="center">
-	<img width="60%" src="./images/frypi-pin-map.jpg">
+	<img width="100%" src="./images/frypi-pin-map.jpg">
 </p>
+
 
 ## :package: Get Started
 

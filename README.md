@@ -61,8 +61,9 @@
   - FryPi的pin map如下所示，目前仅有一部分IO口被用到LCD和触摸屏等外设.
 
 <p align="center">
-	<img width="60%" src="./images/frypi-pin-map.jpg">
+	<img width="100%" src="./images/frypi-pin-map.jpg">
 </p>
+
 
 ## :package: 开机测试
 
