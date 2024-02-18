@@ -27,9 +27,10 @@
 
 <p align="center">
 	<a href="https://space.bilibili.com/34154740">Bilibili </a> |
-	<a href="https://www.bilibili.com/video/BV19g4y1N7YR/">video </a> |
+	<a href="https://www.bilibili.com/video/BV1u2421F7kf">video </a> |
     <a href="https://oshwhub.com/no_chicken/frypi">hardware </a> 
 </p>
+
 
 
 

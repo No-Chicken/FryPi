@@ -27,9 +27,10 @@
 
 <p align="center">
 	<a href="https://space.bilibili.com/34154740">bilibili主页 </a> |
-	<a href="https://www.bilibili.com/video/BV19g4y1N7YR/">演示视频 </a> |
+	<a href="https://www.bilibili.com/video/BV1u2421F7kf">演示视频 </a> |
     <a href="https://oshwhub.com/no_chicken/frypi">硬件开源 </a> 
 </p>
+
 
 
 ## :ledger: 简介
