@@ -37,6 +37,8 @@
 
 这是一个比手掌还小的STM32F411RET6迷你开发板，可以用于AI开发，UI开发，数字电源控制板等等，甚至可以拿去用于你的毕业设计和其他相关的项目。
 
+说明手册链接：https://no-chicken.xyz
+
 <p align="center">
 	<img width="30%" src="./images/Core_V1.1后视图.png">
     &nbsp;
