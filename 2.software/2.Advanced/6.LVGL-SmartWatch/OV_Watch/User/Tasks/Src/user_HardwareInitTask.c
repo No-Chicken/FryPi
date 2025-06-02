@@ -147,12 +147,8 @@ void HardwareInitTask(void *argument)
 
 
     // BLE
-    KT6328_GPIO_Init();
-    KT6328_Disable();
-
-    //set the KT6328 BautRate 9600
-    //default is 115200
-    //printf("AT+CT01\r\n");
+    HWInterface.BLE.Init();
+    HWInterface.BLE.Disable();
 
     // touch
     CST816_GPIO_Init();
