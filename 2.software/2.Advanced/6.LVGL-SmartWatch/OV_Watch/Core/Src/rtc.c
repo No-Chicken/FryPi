@@ -57,24 +57,24 @@ void MX_RTC_Init(void)
 
   /* USER CODE BEGIN Check_RTC_BKUP */
 	if(HAL_RTCEx_BKUPRead(&hrtc,RTC_BKP_DR0)!=0X5050)//是否第一次配置
-  { 
+  {
   /* USER CODE END Check_RTC_BKUP */
 
   /** Initialize RTC and set the Time and Date
   */
   sTime.Hours = 0x11;
   sTime.Minutes = 0x59;
-  sTime.Seconds = 0x50;
+  sTime.Seconds = 0x55;
   sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
   sTime.StoreOperation = RTC_STOREOPERATION_RESET;
   if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD) != HAL_OK)
   {
     Error_Handler();
   }
-  sDate.WeekDay = RTC_WEEKDAY_MONDAY;
-  sDate.Month = RTC_MONTH_JANUARY;
-  sDate.Date = 0x1;
-  sDate.Year = 0x24;
+  sDate.WeekDay = RTC_WEEKDAY_SUNDAY;
+  sDate.Month = RTC_MONTH_MAY;
+  sDate.Date = 0x21;
+  sDate.Year = 0x23;
 
   if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD) != HAL_OK)
   {
@@ -89,7 +89,7 @@ void MX_RTC_Init(void)
   }
   /* USER CODE BEGIN RTC_Init 2 */
 	HAL_RTCEx_BKUPWrite(&hrtc,RTC_BKP_DR0,0X5050);//标记已经初始化过了
-  } 
+  }
   /* USER CODE END RTC_Init 2 */
 
 }
@@ -107,7 +107,7 @@ void HAL_RTC_MspInit(RTC_HandleTypeDef* rtcHandle)
   /** Initializes the peripherals clock
   */
     PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_RTC;
-    PeriphClkInitStruct.RTCClockSelection = RCC_RTCCLKSOURCE_LSI;
+    PeriphClkInitStruct.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
     {
       Error_Handler();
@@ -145,7 +145,7 @@ void HAL_RTC_MspDeInit(RTC_HandleTypeDef* rtcHandle)
 }
 
 /* USER CODE BEGIN 1 */
-uint8_t weekday_cluculate(int y,int m,int d,int c)
+uint8_t weekday_calculate(int y,int m,int d,int c)
 {
 	int w;
 	if (m == 1 || m == 2)
@@ -176,10 +176,10 @@ void RTC_SetDate(uint8_t year, uint8_t month, uint8_t date)
 	setdate.Date=date;
 	setdate.Month=month;
 	setdate.Year=year;
-	
+
 	//culculat the weekday
-	setdate.WeekDay = weekday_cluculate(year,month,date,20);
-	
+	setdate.WeekDay = weekday_calculate(year,month,date,20);
+
 	if (HAL_RTC_SetDate(&hrtc, &setdate, RTC_FORMAT_BIN) != HAL_OK)
   {
     Error_Handler();

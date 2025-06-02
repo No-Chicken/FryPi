@@ -1,6 +1,6 @@
-#include "CST816.h" 
+#include "CST816.h"
 
-#define TOUCH_OFFSET_Y 15
+#define TOUCH_OFFSET_Y 0
 #define REVERSE 1
 
 CST816_Info	CST816_Instance;
@@ -22,24 +22,24 @@ iic_bus_t CST816_dev =
 *********************************************************************************************************
 */
 void CST816_GPIO_Init(void)
-{	
+{
 	GPIO_InitTypeDef GPIO_InitStructure = {0};
 	__HAL_RCC_GPIOB_CLK_ENABLE();
-	
+
 	/* 初始化复位引脚 */
 	GPIO_InitStructure.Pin = TOUCH_RST_PIN;
 	GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP;
 	GPIO_InitStructure.Pull = GPIO_PULLUP;
 	GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
 	HAL_GPIO_Init(TOUCH_RST_PORT, &GPIO_InitStructure);
-	
+
 	HAL_GPIO_WritePin(TOUCH_RST_PORT,TOUCH_RST_PIN,GPIO_PIN_SET);
-	
+
 	/* 初始化中断引脚,不用中断的话屏蔽掉 */
-	
+
 	/* 初始化I2C引脚 */
 	IICInit(&CST816_dev);
-	
+
 	/* 给一个停止信号, 复位I2C总线上的所有设备到待机模式 */
 	//IICStop(&CST816_dev);
 }
@@ -223,7 +223,7 @@ void CST816_Config_MotionSlAngle(uint8_t x_right_y_up_angle)
 *********************************************************************************************************
 *	函 数 名: CST816_Config_NorScanPer
 *	功能说明: 正常快速检测周期配置函数。
-*						此值会影响到LpAutoWakeTime和AutoSleepTime。 
+*						此值会影响到LpAutoWakeTime和AutoSleepTime。
 *						单位10ms，可选值：1～30。默认值为1。
 *	形    参：Period：周期值
 *	返 回 值: 无

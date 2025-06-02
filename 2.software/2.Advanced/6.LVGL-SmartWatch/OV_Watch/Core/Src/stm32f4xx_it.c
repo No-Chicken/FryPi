@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2024 STMicroelectronics.
+  * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -22,6 +22,8 @@
 #include "stm32f4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "key.h"
+#include "power.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,7 +62,7 @@ extern DMA_HandleTypeDef hdma_spi1_tx;
 extern DMA_HandleTypeDef hdma_usart1_rx;
 extern DMA_HandleTypeDef hdma_usart1_tx;
 extern UART_HandleTypeDef huart1;
-extern TIM_HandleTypeDef htim11;
+extern TIM_HandleTypeDef htim1;
 
 /* USER CODE BEGIN EV */
 uint8_t HardInt_receive_str[25];
@@ -174,7 +176,6 @@ void DebugMon_Handler(void)
 void RTC_WKUP_IRQHandler(void)
 {
   /* USER CODE BEGIN RTC_WKUP_IRQn 0 */
-
   /* USER CODE END RTC_WKUP_IRQn 0 */
   HAL_RTCEx_WakeUpTimerIRQHandler(&hrtc);
   /* USER CODE BEGIN RTC_WKUP_IRQn 1 */
@@ -183,17 +184,29 @@ void RTC_WKUP_IRQHandler(void)
 }
 
 /**
-  * @brief This function handles TIM1 trigger and commutation interrupts and TIM11 global interrupt.
+  * @brief This function handles TIM1 update interrupt and TIM10 global interrupt.
   */
-void TIM1_TRG_COM_TIM11_IRQHandler(void)
+void TIM1_UP_TIM10_IRQHandler(void)
 {
-  /* USER CODE BEGIN TIM1_TRG_COM_TIM11_IRQn 0 */
+  /* USER CODE BEGIN TIM1_UP_TIM10_IRQn 0 */
+  static uint16_t key1_long_press;
+  if(!KEY1)
+  {
+    key1_long_press += 1;
+    if(key1_long_press >= 3000)
+    {
+      Power_DisEnable();
+    }
+  }
+  else
+  {
+    key1_long_press = 0;
+  }
+  /* USER CODE END TIM1_UP_TIM10_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim1);
+  /* USER CODE BEGIN TIM1_UP_TIM10_IRQn 1 */
 
-  /* USER CODE END TIM1_TRG_COM_TIM11_IRQn 0 */
-  HAL_TIM_IRQHandler(&htim11);
-  /* USER CODE BEGIN TIM1_TRG_COM_TIM11_IRQn 1 */
-
-  /* USER CODE END TIM1_TRG_COM_TIM11_IRQn 1 */
+  /* USER CODE END TIM1_UP_TIM10_IRQn 1 */
 }
 
 /**
@@ -260,14 +273,44 @@ void DMA2_Stream7_IRQHandler(void)
 
 /* USER CODE BEGIN 1 */
 
-/**
-  * @brief This function handles EXTI line0 interrupt.Key interrupt
-  */
-void EXTI0_IRQHandler(void)
+void EXTI2_IRQHandler(void)
 {
 
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
+  HardInt_Charg_flag = 1;
+
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_2);
+
+}
+
+/**
+  * @brief This function handles EXTI line4 interrupt.Key2 interrupt
+  */
+void EXTI4_IRQHandler(void)
+{
+
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4);
   
+}
+
+
+/**
+  * @brief This function handles EXTI line[9:5] interrupts.Key1 interrupt
+  */
+void EXTI9_5_IRQHandler(void)
+{
+  
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_5);
+
+}
+
+/**
+  * @brief This function handles EXTI line[15:10] interrupts.MPU Interrupt
+  */
+void EXTI15_10_IRQHandler(void)
+{
+  HardInt_mpu_flag = 1;
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_12);
+
 }
 
 /* USER CODE END 1 */

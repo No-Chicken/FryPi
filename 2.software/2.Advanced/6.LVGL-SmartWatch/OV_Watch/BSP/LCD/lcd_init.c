@@ -4,55 +4,55 @@
 #include "tim.h"
 
 /******************************************************************************
-      å‡½æ•°è¯´æ˜Žï¼šLCDç«¯å£åˆå§‹åŒ–
-      å…¥å£æ•°æ®ï¼šæ— 
-      è¿”å›žå€¼ï¼š  æ— 
+      º¯ÊýËµÃ÷£ºLCD¶Ë¿Ú³õÊ¼»¯
+      Èë¿ÚÊý¾Ý£ºÎÞ
+      ·µ»ØÖµ£º  ÎÞ
 ******************************************************************************/
 void LCD_GPIO_Init(void)
 {
 	GPIO_InitTypeDef  GPIO_InitStructure = {0};
-	
+
 	__HAL_RCC_GPIOC_CLK_ENABLE();
  	__HAL_RCC_GPIOB_CLK_ENABLE();
 	__HAL_RCC_GPIOD_CLK_ENABLE();
 	__HAL_RCC_GPIOA_CLK_ENABLE();
-	
-	GPIO_InitStructure.Pin = RES_PIN;	 
- 	GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP; 		 //æŽ¨æŒ½è¾“å‡º
-	GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_VERY_HIGH;//é€Ÿåº¦50MHz
- 	HAL_GPIO_Init(GPIOB, &GPIO_InitStructure);	  //åˆå§‹åŒ–GPIOB
+
+	GPIO_InitStructure.Pin = RES_PIN;
+ 	GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP; 		 //ÍÆÍìÊä³ö
+	GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_VERY_HIGH;//ËÙ¶È50MHz
+ 	HAL_GPIO_Init(GPIOB, &GPIO_InitStructure);	  //³õÊ¼»¯GPIOB
  	HAL_GPIO_WritePin(GPIOB, RES_PIN, GPIO_PIN_SET);
 
-	GPIO_InitStructure.Pin = DC_PIN;	 
- 	GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP; 		 //æŽ¨æŒ½è¾“å‡º
-	GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_VERY_HIGH;//é€Ÿåº¦50MHz
- 	HAL_GPIO_Init(GPIOC, &GPIO_InitStructure);	  //åˆå§‹åŒ–GPIOC
+	GPIO_InitStructure.Pin = DC_PIN;
+ 	GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP; 		 //ÍÆÍìÊä³ö
+	GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_VERY_HIGH;//ËÙ¶È50MHz
+ 	HAL_GPIO_Init(GPIOC, &GPIO_InitStructure);	  //³õÊ¼»¯GPIOC
  	HAL_GPIO_WritePin(GPIOC, DC_PIN, GPIO_PIN_SET);
 
-	GPIO_InitStructure.Pin = CS_PIN;	 
- 	GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP; 		 //æŽ¨æŒ½è¾“å‡º
-	GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_VERY_HIGH;//é€Ÿåº¦50MHz
- 	HAL_GPIO_Init(GPIOD, &GPIO_InitStructure);	  //åˆå§‹åŒ–GPIOD
+	GPIO_InitStructure.Pin = CS_PIN;
+ 	GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP; 		 //ÍÆÍìÊä³ö
+	GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_VERY_HIGH;//ËÙ¶È50MHz
+ 	HAL_GPIO_Init(GPIOD, &GPIO_InitStructure);	  //³õÊ¼»¯GPIOD
  	HAL_GPIO_WritePin(GPIOD, CS_PIN, GPIO_PIN_SET);
 
 }
 
 
 /******************************************************************************
-      å‡½æ•°è¯´æ˜Žï¼šLCDä¸²è¡Œæ•°æ®å†™å…¥å‡½æ•°(software SPI)
-      å…¥å£æ•°æ®ï¼šdat  è¦å†™å…¥çš„ä¸²è¡Œæ•°æ®
-      è¿”å›žå€¼ï¼š  æ— 
+      º¯ÊýËµÃ÷£ºLCD´®ÐÐÊý¾ÝÐ´Èëº¯Êý(software SPI)
+      Èë¿ÚÊý¾Ý£ºdat  ÒªÐ´ÈëµÄ´®ÐÐÊý¾Ý
+      ·µ»ØÖµ£º  ÎÞ
 ******************************************************************************/
-void LCD_Writ_Bus(u8 dat) 
-{	
+void LCD_Writ_Bus(u8 dat)
+{
 	//hard SPI
 	HAL_SPI_Transmit(&hspi1,&dat,1,1);
-	
+
 	//soft SPI
 	/*
 	u8 i;
 	for(i=0;i<8;i++)
-	{			  
+	{
 		LCD_SCLK_Clr();
 		if(dat&0x80)
 		{
@@ -64,15 +64,15 @@ void LCD_Writ_Bus(u8 dat)
 		}
 		LCD_SCLK_Set();
 		dat<<=1;
-	}	
+	}
 	*/
 }
 
 
 /******************************************************************************
-      å‡½æ•°è¯´æ˜Žï¼šLCDå†™å…¥æ•°æ®
-      å…¥å£æ•°æ®ï¼šdat å†™å…¥çš„æ•°æ®
-      è¿”å›žå€¼ï¼š  æ— 
+      º¯ÊýËµÃ÷£ºLCDÐ´ÈëÊý¾Ý
+      Èë¿ÚÊý¾Ý£ºdat Ð´ÈëµÄÊý¾Ý
+      ·µ»ØÖµ£º  ÎÞ
 ******************************************************************************/
 void LCD_WR_DATA8(u8 dat)
 {
@@ -81,9 +81,9 @@ void LCD_WR_DATA8(u8 dat)
 
 
 /******************************************************************************
-      å‡½æ•°è¯´æ˜Žï¼šLCDå†™å…¥æ•°æ®
-      å…¥å£æ•°æ®ï¼šdat å†™å…¥çš„æ•°æ®
-      è¿”å›žå€¼ï¼š  æ— 
+      º¯ÊýËµÃ÷£ºLCDÐ´ÈëÊý¾Ý
+      Èë¿ÚÊý¾Ý£ºdat Ð´ÈëµÄÊý¾Ý
+      ·µ»ØÖµ£º  ÎÞ
 ******************************************************************************/
 void LCD_WR_DATA(u16 dat)
 {
@@ -93,45 +93,45 @@ void LCD_WR_DATA(u16 dat)
 	temp[0]=(dat>>8)&0xff;
 	temp[1]=dat&0xff;
 	HAL_SPI_Transmit(&hspi1,temp,2,1);
-	
+
 }
 
 
 /******************************************************************************
-      å‡½æ•°è¯´æ˜Žï¼šLCDå†™å…¥å‘½ä»¤
-      å…¥å£æ•°æ®ï¼šdat å†™å…¥çš„å‘½ä»¤
-      è¿”å›žå€¼ï¼š  æ— 
+      º¯ÊýËµÃ÷£ºLCDÐ´ÈëÃüÁî
+      Èë¿ÚÊý¾Ý£ºdat Ð´ÈëµÄÃüÁî
+      ·µ»ØÖµ£º  ÎÞ
 ******************************************************************************/
 void LCD_WR_REG(u8 dat)
 {
-	LCD_DC_Clr();//å†™å‘½ä»¤
+	LCD_DC_Clr();//Ð´ÃüÁî
 	LCD_Writ_Bus(dat);
-	LCD_DC_Set();//å†™æ•°æ®
+	LCD_DC_Set();//Ð´Êý¾Ý
 }
 
 
 /******************************************************************************
-      å‡½æ•°è¯´æ˜Žï¼šè®¾ç½®èµ·å§‹å’Œç»“æŸåœ°å€
-      å…¥å£æ•°æ®ï¼šx1,x2 è®¾ç½®åˆ—çš„èµ·å§‹å’Œç»“æŸåœ°å€
-                y1,y2 è®¾ç½®è¡Œçš„èµ·å§‹å’Œç»“æŸåœ°å€
-      è¿”å›žå€¼ï¼š  æ— 
+      º¯ÊýËµÃ÷£ºÉèÖÃÆðÊ¼ºÍ½áÊøµØÖ·
+      Èë¿ÚÊý¾Ý£ºx1,x2 ÉèÖÃÁÐµÄÆðÊ¼ºÍ½áÊøµØÖ·
+                y1,y2 ÉèÖÃÐÐµÄÆðÊ¼ºÍ½áÊøµØÖ·
+      ·µ»ØÖµ£º  ÎÞ
 ******************************************************************************/
 void LCD_Address_Set(u16 x1,u16 y1,u16 x2,u16 y2)
 {
-	LCD_WR_REG(0x2a);//åˆ—åœ°å€è®¾ç½®
+	LCD_WR_REG(0x2a);//ÁÐµØÖ·ÉèÖÃ
 	LCD_WR_DATA(x1);
 	LCD_WR_DATA(x2);
-	LCD_WR_REG(0x2b);//è¡Œåœ°å€è®¾ç½®
+	LCD_WR_REG(0x2b);//ÐÐµØÖ·ÉèÖÃ
 	LCD_WR_DATA(y1);
 	LCD_WR_DATA(y2);
-	LCD_WR_REG(0x2c);//å‚¨å­˜å™¨å†™
+	LCD_WR_REG(0x2c);//´¢´æÆ÷Ð´
 }
 
 
 /******************************************************************************
-      å‡½æ•°è¯´æ˜Žï¼šLCDè°ƒèŠ‚èƒŒå…‰
-      å…¥å£æ•°æ®ï¼šdc,å ç©ºæ¯”,5%~100%
-      è¿”å›žå€¼ï¼š  æ— 
+      º¯ÊýËµÃ÷£ºLCDµ÷½Ú±³¹â
+      Èë¿ÚÊý¾Ý£ºdc,Õ¼¿Õ±È,5%~100%
+      ·µ»ØÖµ£º  ÎÞ
 ******************************************************************************/
 void LCD_Set_Light(uint8_t dc)
 {
@@ -141,21 +141,21 @@ void LCD_Set_Light(uint8_t dc)
 
 
 /******************************************************************************
-      å‡½æ•°è¯´æ˜Žï¼šLCDå…³é—­èƒŒå…‰
-      å…¥å£æ•°æ®ï¼šæ— 
-      è¿”å›žå€¼ï¼š  æ— 
+      º¯ÊýËµÃ÷£ºLCD¹Ø±Õ±³¹â
+      Èë¿ÚÊý¾Ý£ºÎÞ
+      ·µ»ØÖµ£º  ÎÞ
 ******************************************************************************/
 void LCD_Close_Light(void)
 {
 	__HAL_TIM_SetCompare(&htim2,TIM_CHANNEL_1,0);
-	HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
+	//HAL_TIM_PWM_Stop(&htim3,TIM_CHANNEL_3);
 }
 
 
 /******************************************************************************
-      å‡½æ•°è¯´æ˜Žï¼šLCDå¼€å¯èƒŒå…‰
-      å…¥å£æ•°æ®ï¼šæ— 
-      è¿”å›žå€¼ï¼š  æ— 
+      º¯ÊýËµÃ÷£ºLCD¿ªÆô±³¹â
+      Èë¿ÚÊý¾Ý£ºÎÞ
+      ·µ»ØÖµ£º  ÎÞ
 ******************************************************************************/
 void LCD_Open_Light(void)
 {
@@ -163,9 +163,9 @@ void LCD_Open_Light(void)
 }
 
 /******************************************************************************
-      å‡½æ•°è¯´æ˜Žï¼šST7789 SLEEP IN
-      å…¥å£æ•°æ®ï¼šæ— 
-      è¿”å›žå€¼ï¼š  æ— 
+      º¯ÊýËµÃ÷£ºST7789 SLEEP IN
+      Èë¿ÚÊý¾Ý£ºÎÞ
+      ·µ»ØÖµ£º  ÎÞ
 ******************************************************************************/
 void LCD_ST7789_SleepIn(void)
 {
@@ -175,9 +175,9 @@ void LCD_ST7789_SleepIn(void)
 
 
 /******************************************************************************
-      å‡½æ•°è¯´æ˜Žï¼šST7789 SLEEP OUT
-      å…¥å£æ•°æ®ï¼šæ— 
-      è¿”å›žå€¼ï¼š  æ— 
+      º¯ÊýËµÃ÷£ºST7789 SLEEP OUT
+      Èë¿ÚÊý¾Ý£ºÎÞ
+      ·µ»ØÖµ£º  ÎÞ
 ******************************************************************************/
 void LCD_ST7789_SleepOut(void)
 {
@@ -187,23 +187,23 @@ void LCD_ST7789_SleepOut(void)
 
 
 /******************************************************************************
-      å‡½æ•°è¯´æ˜Žï¼šLCDåˆå§‹åŒ–
-      å…¥å£æ•°æ®ï¼šæ— 
-      è¿”å›žå€¼ï¼š  æ— 
+      º¯ÊýËµÃ÷£ºLCD³õÊ¼»¯
+      Èë¿ÚÊý¾Ý£ºÎÞ
+      ·µ»ØÖµ£º  ÎÞ
 ******************************************************************************/
 void LCD_Init(void)
 {
-	LCD_GPIO_Init();//åˆå§‹åŒ–GPIO
+	LCD_GPIO_Init();//³õÊ¼»¯GPIO
 	LCD_CS_Clr();		//chip select
-	
-	LCD_RES_Clr();	//å¤ä½
+
+	LCD_RES_Clr();	//¸´Î»
 	delay_ms(100);
 	LCD_RES_Set();
 	delay_ms(100);
-	
-	LCD_WR_REG(0x11); 
-	delay_ms(120); 
-	LCD_WR_REG(0x36); 
+
+	LCD_WR_REG(0x11);
+	delay_ms(120);
+	LCD_WR_REG(0x36);
 	if(USE_HORIZONTAL==0)LCD_WR_DATA8(0x00);
 	else if(USE_HORIZONTAL==1)LCD_WR_DATA8(0xC0);
 	else if(USE_HORIZONTAL==2)LCD_WR_DATA8(0x70);
@@ -217,10 +217,10 @@ void LCD_Init(void)
 	LCD_WR_DATA8(0x0C);
 	LCD_WR_DATA8(0x00);
 	LCD_WR_DATA8(0x33);
-	LCD_WR_DATA8(0x33); 
+	LCD_WR_DATA8(0x33);
 
-	LCD_WR_REG(0xB7); 
-	LCD_WR_DATA8(0x35);  
+	LCD_WR_REG(0xB7);
+	LCD_WR_DATA8(0x35);
 
 	LCD_WR_REG(0xBB);
 	LCD_WR_DATA8(0x19);
@@ -232,15 +232,15 @@ void LCD_Init(void)
 	LCD_WR_DATA8(0x01);
 
 	LCD_WR_REG(0xC3);
-	LCD_WR_DATA8(0x12);   
+	LCD_WR_DATA8(0x12);
 
 	LCD_WR_REG(0xC4);
-	LCD_WR_DATA8(0x20);  
+	LCD_WR_DATA8(0x20);
 
-	LCD_WR_REG(0xC6); 
-	LCD_WR_DATA8(0x0F);    
+	LCD_WR_REG(0xC6);
+	LCD_WR_DATA8(0x0F);
 
-	LCD_WR_REG(0xD0); 
+	LCD_WR_REG(0xD0);
 	LCD_WR_DATA8(0xA4);
 	LCD_WR_DATA8(0xA1);
 
@@ -276,9 +276,9 @@ void LCD_Init(void)
 	LCD_WR_DATA8(0x20);
 	LCD_WR_DATA8(0x23);
 
-	LCD_WR_REG(0x21); 
+	LCD_WR_REG(0x21);
 
-	LCD_WR_REG(0x29); 
+	LCD_WR_REG(0x29);
 }
 
 

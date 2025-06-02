@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2024 STMicroelectronics.
+  * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -148,7 +148,7 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-		HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_13);
+		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
     osDelay(500);
   }
   /* USER CODE END StartDefaultTask */

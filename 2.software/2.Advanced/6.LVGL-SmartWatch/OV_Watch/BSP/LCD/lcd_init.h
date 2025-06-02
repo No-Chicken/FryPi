@@ -3,7 +3,7 @@
 
 #include "sys.h"
 
-#define USE_HORIZONTAL 1 //è®¾ç½®æ¨ªå±æˆ–è€…ç«–å±æ˜¾ç¤º 0æˆ–1ä¸ºç«–å± 2æˆ–3ä¸ºæ¨ªå±
+#define USE_HORIZONTAL 1 //ÉèÖÃºáÆÁ»òÕßÊúÆÁÏÔÊ¾ 0»ò1ÎªÊúÆÁ 2»ò3ÎªºáÆÁ
 
 
 #if USE_HORIZONTAL==0||USE_HORIZONTAL==1
@@ -16,7 +16,7 @@
 #endif
 
 
-//-----------------LCDç«¯å£å®šä¹‰---------------- 
+//-----------------LCD¶Ë¿Ú¶¨Òå----------------
 #define SCLK_PORT			GPIOB
 #define SCLK_PIN			GPIO_PIN_3
 
@@ -46,20 +46,20 @@
 
 #define LCD_DC_Clr()   HAL_GPIO_WritePin(DC_PORT,DC_PIN,GPIO_PIN_RESET)//DC
 #define LCD_DC_Set()   HAL_GPIO_WritePin(DC_PORT,DC_PIN,GPIO_PIN_SET)
- 		     
+
 #define LCD_CS_Clr()   HAL_GPIO_WritePin(CS_PORT,CS_PIN,GPIO_PIN_RESET)//CS
 #define LCD_CS_Set()   HAL_GPIO_WritePin(CS_PORT,CS_PIN,GPIO_PIN_SET)
 
 #define LCD_BLK_Clr()  HAL_GPIO_WritePin(BLK_PORT,BLK_PIN,GPIO_PIN_RESET)//BLK
 #define LCD_BLK_Set()  HAL_GPIO_WritePin(BLK_PORT,BLK_PIN,GPIO_PIN_SET)
 
-void LCD_GPIO_Init(void);//åˆå§‹åŒ–GPIO
-void LCD_Writ_Bus(u8 dat);//æ¨¡æ‹ŸSPIæ—¶åº
-void LCD_WR_DATA8(u8 dat);//å†™å…¥ä¸€ä¸ªå­—èŠ‚
-void LCD_WR_DATA(u16 dat);//å†™å…¥ä¸¤ä¸ªå­—èŠ‚
-void LCD_WR_REG(u8 dat);//å†™å…¥ä¸€ä¸ªæŒ‡ä»¤
-void LCD_Address_Set(u16 x1,u16 y1,u16 x2,u16 y2);//è®¾ç½®åæ ‡å‡½æ•°
-void LCD_Init(void);//LCDåˆå§‹åŒ–
+void LCD_GPIO_Init(void);//³õÊ¼»¯GPIO
+void LCD_Writ_Bus(u8 dat);//Ä£ÄâSPIÊ±Ğò
+void LCD_WR_DATA8(u8 dat);//Ğ´ÈëÒ»¸ö×Ö½Ú
+void LCD_WR_DATA(u16 dat);//Ğ´ÈëÁ½¸ö×Ö½Ú
+void LCD_WR_REG(u8 dat);//Ğ´ÈëÒ»¸öÖ¸Áî
+void LCD_Address_Set(u16 x1,u16 y1,u16 x2,u16 y2);//ÉèÖÃ×ø±êº¯Êı
+void LCD_Init(void);//LCD³õÊ¼»¯
 void LCD_Set_Light(uint8_t dc);
 void LCD_Close_Light(void);
 void LCD_ST7789_SleepIn(void);

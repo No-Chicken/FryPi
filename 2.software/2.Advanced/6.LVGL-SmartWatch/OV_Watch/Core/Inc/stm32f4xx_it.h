@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2024 STMicroelectronics.
+  * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -56,13 +56,16 @@ void BusFault_Handler(void);
 void UsageFault_Handler(void);
 void DebugMon_Handler(void);
 void RTC_WKUP_IRQHandler(void);
-void TIM1_TRG_COM_TIM11_IRQHandler(void);
+void TIM1_UP_TIM10_IRQHandler(void);
 void USART1_IRQHandler(void);
 void DMA2_Stream2_IRQHandler(void);
 void DMA2_Stream5_IRQHandler(void);
 void DMA2_Stream7_IRQHandler(void);
 /* USER CODE BEGIN EFP */
-
+void EXTI2_IRQHandler(void);
+void EXTI4_IRQHandler(void);
+void EXTI9_5_IRQHandler(void);
+void EXTI15_10_IRQHandler(void);
 /* USER CODE END EFP */
 
 #ifdef __cplusplus

@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2024 STMicroelectronics.
+  * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -21,7 +21,7 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
-#include <stdio.h>
+#include "stdio.h"
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart1;

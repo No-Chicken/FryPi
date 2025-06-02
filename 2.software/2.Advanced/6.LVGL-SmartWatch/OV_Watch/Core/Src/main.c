@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2024 STMicroelectronics.
+  * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
+#include "adc.h"
 #include "dma.h"
 #include "rtc.h"
 #include "spi.h"
@@ -28,16 +29,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "stm32f4xx_it.h"
-#include "lcd.h"
-#include "lcd_init.h"
-#include "CST816.h"
-#include "key.h"
-//gui
-#include "lvgl.h"
-#include "lv_port_disp.h"
-#include "lv_port_indev.h"
-#include "ui.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,7 +39,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -80,7 +71,9 @@ void MX_FREERTOS_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+	//this must set same as keil setting
+	// SCB->VTOR = 0x0000C000U;
+	SCB->VTOR = 0x00000000U;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -96,56 +89,19 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+	__enable_irq();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
-  MX_SPI1_Init();
+  MX_ADC1_Init();
   MX_RTC_Init();
-  MX_USART1_UART_Init();
+  MX_SPI1_Init();
   MX_TIM2_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
-  //RTC Wake
-	if(HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 2000, RTC_WAKEUPCLOCK_RTCCLK_DIV16) != HAL_OK)
-  {
-    Error_Handler();
-  }
-	//usart start
-	HAL_UART_Receive_DMA(&huart1,(uint8_t*)HardInt_receive_str,25);
-	__HAL_UART_ENABLE_IT(&huart1,UART_IT_IDLE);
-
-	//PWM Start
-	HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
-	
-  //sys delay
-	delay_init();
-
-	//key
-	Key_Port_Init();
-	
-	//touch
-	CST816_GPIO_Init();
-	CST816_RESET();
-	
-	//lcd
-	LCD_Init();
-	LCD_Fill(0,0,LCD_W,LCD_H,BLACK);
-	delay_ms(10);
-  LCD_Set_Light(50);
-	LCD_ShowString(72,LCD_H/2-20,(uint8_t*)"Welcome!",WHITE,BLACK,24,0);//12*6,16*8,24*12,32*16
-	LCD_ShowString(42,LCD_H/2+48-20,(uint8_t*)"OV-Watch V2.3",WHITE,BLACK,24,0);
-	delay_ms(1000);
-	LCD_Fill(0,LCD_H/2-24-20,LCD_W,LCD_H/2+49-20,BLACK);
-
-  //LVGL init
-	lv_init();
-	lv_port_disp_init();
-	lv_port_indev_init();
-	ui_init();
-	
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -163,8 +119,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		HAL_Delay(500);
-		HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_13);
+
   }
   /* USER CODE END 3 */
 }
@@ -186,10 +141,10 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_LSI;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_LSE;
+  RCC_OscInitStruct.LSEState = RCC_LSE_ON;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
-  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLM = 8;
@@ -222,7 +177,7 @@ void SystemClock_Config(void)
 
 /**
   * @brief  Period elapsed callback in non blocking mode
-  * @note   This function is called  when TIM11 interrupt took place, inside
+  * @note   This function is called  when TIM1 interrupt took place, inside
   * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
   * a global variable "uwTick" used as application time base.
   * @param  htim : TIM handle
@@ -233,7 +188,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   /* USER CODE BEGIN Callback 0 */
 
   /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM11) {
+  if (htim->Instance == TIM1) {
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */
