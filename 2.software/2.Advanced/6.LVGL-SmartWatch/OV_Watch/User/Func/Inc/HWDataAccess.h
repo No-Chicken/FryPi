@@ -3,12 +3,13 @@
  *  @brief       Hardware Middle Layer, to access data from BSP and STM32 HAL Library
  *
  *  @{
- *      @file       HWDataAccess.h
+ *      @file       HWDataAccess.c
  *      @brief      middleware, for UI and APP Layer to get the hardware data
  *      @details    you can enable or disable in .h file.
- * 					        加这个文件就是为了方便UI移植, 比如你要把工程移植到PC仿真,
- *   				        直接把MidFunc中的文件和UI文件都复制过去,
- * 					        然后直接把.h文件中的HW_USE_HARDWARE变成0就行了.
+ * 					加这个文件是为了：
+ *                    1.方便UI移植, 你要把工程移植到PC仿真,直接把MidFunc中的文件和UI文件都复制过去,然后直接把.h文件中的HW_USE_HARDWARE变成0就行了.
+ *   				  2.方便控制硬件，自由地把.h文件中的HW_USE_xxx变成0就可以失能不想用的硬件
+ * 					
  */
 
 
