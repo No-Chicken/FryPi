@@ -157,7 +157,7 @@ void IICSendAck(iic_bus_t *bus)
 		delay_us(1);
     SCL_Output(bus,0);
 		delay_us(1);
-	
+
 }
 
 /**
@@ -224,46 +224,46 @@ unsigned char IICReceiveByte(iic_bus_t *bus)
 }
 
 uint8_t IIC_Write_One_Byte(iic_bus_t *bus, uint8_t daddr,uint8_t reg,uint8_t data)
-{				   	  	    																 
-  IICStart(bus);  
-	
-	IICSendByte(bus,daddr<<1);	    
+{
+  IICStart(bus);
+
+	IICSendByte(bus,daddr<<1);
 	if(IICWaitAck(bus))	//µÈ´ýÓ¦´ð
 	{
-		IICStop(bus);		 
-		return 1;		
+		IICStop(bus);
+		return 1;
 	}
 	IICSendByte(bus,reg);
-	IICWaitAck(bus);	   	 										  		   
-	IICSendByte(bus,data);     						   
-	IICWaitAck(bus);  		    	   
+	IICWaitAck(bus);
+	IICSendByte(bus,data);
+	IICWaitAck(bus);
   IICStop(bus);
 	delay_us(1);
 	return 0;
 }
 
 uint8_t IIC_Write_Multi_Byte(iic_bus_t *bus, uint8_t daddr,uint8_t reg,uint8_t length,uint8_t buff[])
-{			
-	unsigned char i;	
-  IICStart(bus);  
-	
-	IICSendByte(bus,daddr<<1);	    
+{
+	unsigned char i;
+  IICStart(bus);
+
+	IICSendByte(bus,daddr<<1);
 	if(IICWaitAck(bus))
 	{
 		IICStop(bus);
 		return 1;
 	}
 	IICSendByte(bus,reg);
-	IICWaitAck(bus);	
+	IICWaitAck(bus);
 	for(i=0;i<length;i++)
 	{
-		IICSendByte(bus,buff[i]);     						   
-		IICWaitAck(bus); 
-	}		    	   
+		IICSendByte(bus,buff[i]);
+		IICWaitAck(bus);
+	}
   IICStop(bus);
 	delay_us(1);
 	return 0;
-} 
+}
 
 unsigned char IIC_Read_One_Byte(iic_bus_t *bus, uint8_t daddr,uint8_t reg)
 {
@@ -273,7 +273,7 @@ unsigned char IIC_Read_One_Byte(iic_bus_t *bus, uint8_t daddr,uint8_t reg)
 	IICWaitAck(bus);
 	IICSendByte(bus,reg);
 	IICWaitAck(bus);
-	
+
 	IICStart(bus);
 	IICSendByte(bus,(daddr<<1)+1);
 	IICWaitAck(bus);
@@ -291,12 +291,12 @@ uint8_t IIC_Read_Multi_Byte(iic_bus_t *bus, uint8_t daddr, uint8_t reg, uint8_t 
 	IICSendByte(bus,daddr<<1);
 	if(IICWaitAck(bus))
 	{
-		IICStop(bus);		 
-		return 1;		
+		IICStop(bus);
+		return 1;
 	}
 	IICSendByte(bus,reg);
 	IICWaitAck(bus);
-	
+
 	IICStart(bus);
 	IICSendByte(bus,(daddr<<1)+1);
 	IICWaitAck(bus);
@@ -318,13 +318,13 @@ void IICInit(iic_bus_t *bus)
     GPIO_InitTypeDef GPIO_InitStructure = {0};
 
 		//bus->CLK_ENABLE();
-		
+
     GPIO_InitStructure.Pin = bus->IIC_SDA_PIN ;
     GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP;
     GPIO_InitStructure.Pull = GPIO_PULLUP;
     GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_HIGH;
     HAL_GPIO_Init(bus->IIC_SDA_PORT, &GPIO_InitStructure);
-		
+
 		GPIO_InitStructure.Pin = bus->IIC_SCL_PIN ;
     HAL_GPIO_Init(bus->IIC_SCL_PORT, &GPIO_InitStructure);
 }

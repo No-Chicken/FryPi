@@ -76,7 +76,7 @@ void lv_port_disp_init(void)
      *      This way LVGL will always provide the whole rendered screen in `flush_cb`
      *      and you only need to change the frame buffer's address.
      */
-	 
+
 	static lv_disp_drv_t disp_drv;                         /*Descriptor of a display driver*/
     lv_disp_drv_init(&disp_drv);                    /*Basic initialization*/
 
@@ -151,7 +151,7 @@ static void disp_flush(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_colo
     /*The most simple case (but also the slowest) to put all pixels to the screen one-by-one*/
 
     LCD_Color_Fill(area->x1,area->y1,area->x2,area->y2,(u16*)color_p);
-	
+
     /*IMPORTANT!!!
      *Inform the graphics library that you are ready with the flushing*/
     lv_disp_flush_ready(disp_drv);

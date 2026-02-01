@@ -69,6 +69,8 @@
         "datasave.h": "c",
         "lcd_init.h": "c",
         "key.h": "c",
-        "cst816.h": "c"
+        "cst816.h": "c",
+        "freertos.h": "c",
+        "freertosconfig.h": "c"
     }
 }
