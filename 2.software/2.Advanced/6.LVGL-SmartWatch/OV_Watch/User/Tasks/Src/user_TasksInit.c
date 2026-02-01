@@ -117,7 +117,7 @@ const osThreadAttr_t ChargPageEnterTask_attributes = {
 osThreadId_t MessageSendTaskHandle;
 const osThreadAttr_t MessageSendTask_attributes = {
   .name = "MessageSendTask",
-  .stack_size = 128 * 5,
+  .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityLow1,
 };
 

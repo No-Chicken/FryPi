@@ -131,6 +131,8 @@ void MessageSendTask(void *argument)
 			}
 			memset(HardInt_receive_str,0,sizeof(HardInt_receive_str));
 		}
+		uint8_t rest_stack_words_size = uxTaskGetStackHighWaterMark(NULL);
+		printf("the rest size of mesg send task is: %d word\r\n", rest_stack_words_size);
 		osDelay(1000);
 	}
 }
