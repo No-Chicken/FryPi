@@ -55,6 +55,19 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+
+void (*func_ptr)(void) = NULL;
+
+int *ptr = NULL;
+
+volatile int counter = 0;
+
+void recursiveFunction() {
+    counter++;                   
+    recursiveFunction();         
+    counter--;                   
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -86,6 +99,12 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
+
+	// hardfault
+	// func_ptr();
+	// *ptr = 10;
+	// recursiveFunction();
+
 
   /* USER CODE END 2 */
 
