@@ -76,6 +76,7 @@ void recursiveFunction() {
   */
 int main(void)
 {
+
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -115,16 +116,13 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    // 设置引脚为高电平
+
     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);
 
-    // 延时一段时间
     HAL_Delay(500);
 
-    // 设置引脚为低电平
     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
 
-    // 延时一段时间
     HAL_Delay(500);
   }
   /* USER CODE END 3 */
