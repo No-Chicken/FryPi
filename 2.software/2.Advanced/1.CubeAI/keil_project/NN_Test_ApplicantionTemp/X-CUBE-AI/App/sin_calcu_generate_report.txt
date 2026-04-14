@@ -1,0 +1,189 @@
+ST Edge AI Core v2.1.0-20194 329b0e98d
+Created date          : 2026-04-14 16:41:15
+Parameters            : generate --target stm32f4 --name sin_calcu -m C:/Users/kingham/Desktop/sine_calcu.tflite --compression none --verbosity 1 --workspace C:/Users/kingham/AppData/Local/Temp/mxAI_workspace158790554430017495765220975533628 --output C:/Users/kingham/.stm32cubemx/network_output
+
+Exec/report summary (generate)
+-------------------------------------------------------------------------------------------------------------
+model file         :   C:\Users\kingham\Desktop\sine_calcu.tflite                                            
+type               :   tflite                                                                                
+c_name             :   sin_calcu                                                                             
+compression        :   none                                                                                  
+options            :   allocate-inputs, allocate-outputs                                                     
+optimization       :   balanced                                                                              
+target/series      :   stm32f4                                                                               
+workspace dir      :   C:\Users\kingham\AppData\Local\Temp\mxAI_workspace158790554430017495765220975533628   
+output dir         :   C:\Users\kingham\.stm32cubemx\network_output                                          
+model_fmt          :   float                                                                                 
+model_name         :   sine_calcu                                                                            
+model_hash         :   0x6119770d424f2e8c9dc62f73c2ee8a7c                                                    
+params #           :   81 items (324 B)                                                                      
+-------------------------------------------------------------------------------------------------------------
+input 1/1          :   'serving_default_dense_input0', f32(1x1), 4 Bytes, activations                        
+output 1/1         :   'gemm_4', f32(1x1), 4 Bytes, activations                                              
+macc               :   231                                                                                   
+weights (ro)       :   324 B (324 B) (1 segment)                                                             
+activations (rw)   :   60 B (60 B) (1 segment) *                                                             
+ram (total)        :   60 B (60 B) = 60 + 0 + 0                                                              
+-------------------------------------------------------------------------------------------------------------
+(*) 'input'/'output' buffers can be used from the activations buffer
+
+Model name - sine_calcu
+------ ------------------------------------------------ ------------ ------------ ------ -------------------------------- --- -------------- -------------- ------------------ 
+m_id   layer (type,original)                            oshape       param/size     macc                     connected to   | c_size         c_macc         c_type             
+------ ------------------------------------------------ ------------ ------------ ------ -------------------------------- --- -------------- -------------- ------------------ 
+0      serving_default_dense_input0 (Input, )           [b:1,c:1]                                                           | +80(+100.0%)   +20(+100.0%)   Dense_[0]          
+       sequential_dense_MatMul (Placeholder, )          [b:10,c:1]   10/40                                                  | -40(-100.0%)                  
+       sequential_dense_B..VariableOp (Placeholder, )   [b:10]       10/40                                                  | -40(-100.0%)                  
+       gemm_0 (Gemm, FULLY_CONNECTED)                   [b:1,c:10]                    20     serving_default_dense_input0   |                -20(-100.0%)   
+                                                                                                  sequential_dense_MatMul   | 
+                                                                                           sequential_dense_B..VariableOp   | 
+------ ------------------------------------------------ ------------ ------------ ------ -------------------------------- --- -------------- -------------- ------------------ 
+1      nl_1 (Nonlinearity, TANH)                        [b:1,c:10]                   100                           gemm_0   |                               Nonlinearity_[1]   
+------ ------------------------------------------------ ------------ ------------ ------ -------------------------------- --- -------------- -------------- ------------------ 
+2      sequential_dense_1_MatMul (Placeholder, )        [b:5,c:10]   50/200                                                 | +20(+10.0%)    +55(+100.0%)   Dense_[2]          
+       sequential_dense_1..VariableOp (Placeholder, )   [b:5]        5/20                                                   | -20(-100.0%)                  
+       gemm_2 (Gemm, FULLY_CONNECTED)                   [b:1,c:5]                     55                             nl_1   |                -55(-100.0%)   
+                                                                                                sequential_dense_1_MatMul   | 
+                                                                                           sequential_dense_1..VariableOp   | 
+------ ------------------------------------------------ ------------ ------------ ------ -------------------------------- --- -------------- -------------- ------------------ 
+3      nl_3 (Nonlinearity, TANH)                        [b:1,c:5]                     50                           gemm_2   |                               Nonlinearity_[3]   
+------ ------------------------------------------------ ------------ ------------ ------ -------------------------------- --- -------------- -------------- ------------------ 
+4      sequential_dense_2_MatMul (Placeholder, )        [b:1,c:5]    5/20                                                   | +4(+20.0%)     +6(+100.0%)    Dense_[o][4]       
+       sequential_dense_2..VariableOp (Placeholder, )   [b:1]        1/4                                                    | -4(-100.0%)                   
+       gemm_4 (Gemm, FULLY_CONNECTED)                   [b:1,c:1]                      6                             nl_3   |                -6(-100.0%)    
+                                                                                                sequential_dense_2_MatMul   | 
+                                                                                           sequential_dense_2..VariableOp   | 
+------ ------------------------------------------------ ------------ ------------ ------ -------------------------------- --- -------------- -------------- ------------------ 
+model/c-model: macc=231/231  weights=324/324  activations=--/60 io=--/0
+
+
+
+Generated C-graph summary
+------------------------------------------------------------------------------------------------------------------------
+model name            : sine_calcu
+c-name                : sin_calcu
+c-node #              : 5
+c-array #             : 12
+activations size      : 60 (1 segment)
+weights size          : 324 (1 segment)
+macc                  : 231
+inputs                : ['serving_default_dense_input0_output']
+outputs               : ['gemm_4_output']
+
+C-Arrays (12)
+------ ------------------------------------- ----------- ------------------------- ------------- --------- 
+c_id   name (*_array)                        item/size   domain/mem-pool           c-type        comment   
+------ ------------------------------------- ----------- ------------------------- ------------- --------- 
+0      gemm_0_bias                           10/40       weights/weights           const float             
+1      gemm_0_output                         10/40       activations/**default**   float                   
+2      gemm_0_weights                        10/40       weights/weights           const float             
+3      gemm_2_bias                           5/20        weights/weights           const float             
+4      gemm_2_output                         5/20        activations/**default**   float                   
+5      gemm_2_weights                        50/200      weights/weights           const float             
+6      gemm_4_bias                           1/4         weights/weights           const float             
+7      gemm_4_output                         1/4         activations/**default**   float         /output   
+8      gemm_4_weights                        5/20        weights/weights           const float             
+9      nl_1_output                           10/40       activations/**default**   float                   
+10     nl_3_output                           5/20        activations/**default**   float                   
+11     serving_default_dense_input0_output   1/4         activations/**default**   float         /input    
+------ ------------------------------------- ----------- ------------------------- ------------- --------- 
+
+C-Layers (5)
+------ ---------------- ---- --------------- ------ ----- ---------------------------------------- ------------------ 
+c_id   name (*_layer)   id   layer_type      macc   rom   tensors                                  shape (array id)   
+------ ---------------- ---- --------------- ------ ----- ---------------------------------------- ------------------ 
+0      gemm_0           0    Dense           20     80    I: serving_default_dense_input0_output   f32(1x1) (11)      
+                                                          W: gemm_0_weights                        f32(10x1) (2)      
+                                                          W: gemm_0_bias                           f32(10) (0)        
+                                                          O: gemm_0_output                         f32(1x10) (1)      
+------ ---------------- ---- --------------- ------ ----- ---------------------------------------- ------------------ 
+1      nl_1             1    Nonlinearity    100    0     I: gemm_0_output                         f32(1x10) (1)      
+                                                          O: nl_1_output                           f32(1x10) (9)      
+------ ---------------- ---- --------------- ------ ----- ---------------------------------------- ------------------ 
+2      gemm_2           2    Dense           55     220   I: nl_1_output                           f32(1x10) (9)      
+                                                          W: gemm_2_weights                        f32(5x10) (5)      
+                                                          W: gemm_2_bias                           f32(5) (3)         
+                                                          O: gemm_2_output                         f32(1x5) (4)       
+------ ---------------- ---- --------------- ------ ----- ---------------------------------------- ------------------ 
+3      nl_3             3    Nonlinearity    50     0     I: gemm_2_output                         f32(1x5) (4)       
+                                                          O: nl_3_output                           f32(1x5) (10)      
+------ ---------------- ---- --------------- ------ ----- ---------------------------------------- ------------------ 
+4      gemm_4           4    Dense           6      24    I: nl_3_output                           f32(1x5) (10)      
+                                                          W: gemm_4_weights                        f32(1x5) (8)       
+                                                          W: gemm_4_bias                           f32(1) (6)         
+                                                          O: gemm_4_output                         f32(1x1) (7)       
+------ ---------------- ---- --------------- ------ ----- ---------------------------------------- ------------------ 
+
+
+
+Number of operations per c-layer
+------- ------ --------------------- ----- -------------- 
+c_id    m_id   name (type)             #op           type 
+------- ------ --------------------- ----- -------------- 
+0       0      gemm_0 (Dense)           20   smul_f32_f32 
+1       1      nl_1 (Nonlinearity)     100     op_f32_f32 
+2       2      gemm_2 (Dense)           55   smul_f32_f32 
+3       3      nl_3 (Nonlinearity)      50     op_f32_f32 
+4       4      gemm_4 (Dense)            6   smul_f32_f32 
+------- ------ --------------------- ----- -------------- 
+total                                  231 
+
+Number of operation types
+---------------- ----- ----------- 
+operation type       #           % 
+---------------- ----- ----------- 
+smul_f32_f32        81       35.1% 
+op_f32_f32         150       64.9% 
+
+Complexity report (model)
+------ ------------------------------ ------------------------- ------------------------- ------ 
+m_id   name                           c_macc                    c_rom                     c_id   
+------ ------------------------------ ------------------------- ------------------------- ------ 
+0      serving_default_dense_input0   ||||               8.7%   ||||||            24.7%   [0]    
+1      nl_1                           ||||||||||||||||  43.3%   |                  0.0%   [1]    
+2      sequential_dense_1_MatMul      |||||||||         23.8%   ||||||||||||||||  67.9%   [2]    
+3      nl_3                           ||||||||          21.6%   |                  0.0%   [3]    
+4      sequential_dense_2_MatMul      |                  2.6%   ||                 7.4%   [4]    
+------ ------------------------------ ------------------------- ------------------------- ------ 
+macc=231 weights=324 act=60 ram_io=0
+ 
+ Requested memory size by section - "stm32f4" target
+ ------------------------------ ------- -------- ------- ----- 
+ module                            text   rodata    data   bss 
+ ------------------------------ ------- -------- ------- ----- 
+ NetworkRuntime1010_CM4_GCC.a     6,028        0       0     0 
+ sin_calcu.o                        524       40   1,584   140 
+ sin_calcu_data.o                    48       16      88     0 
+ lib (toolchain)*                   960       12       0     0 
+ ------------------------------ ------- -------- ------- ----- 
+ RT total**                       7,560       68   1,672   140 
+ ------------------------------ ------- -------- ------- ----- 
+ weights                              0      328       0     0 
+ activations                          0        0       0    60 
+ io                                   0        0       0     0 
+ ------------------------------ ------- -------- ------- ----- 
+ TOTAL                            7,560      396   1,672   200 
+ ------------------------------ ------- -------- ------- ----- 
+ *  toolchain objects (libm/libgcc*)
+ ** RT AI runtime objects (kernels+infrastructure)
+  
+  Summary - "stm32f4" target
+  ---------------------------------------------------
+               FLASH (ro)      %*   RAM (rw)       % 
+  ---------------------------------------------------
+  RT total          9,300   96.6%      1,812   96.8% 
+  ---------------------------------------------------
+  TOTAL             9,628              1,872         
+  ---------------------------------------------------
+  *  rt/total
+
+
+Generated files (7)
+---------------------------------------------------------------------- 
+C:\Users\kingham\.stm32cubemx\network_output\sin_calcu_data_params.h   
+C:\Users\kingham\.stm32cubemx\network_output\sin_calcu_data_params.c   
+C:\Users\kingham\.stm32cubemx\network_output\sin_calcu_data.h          
+C:\Users\kingham\.stm32cubemx\network_output\sin_calcu_data.c          
+C:\Users\kingham\.stm32cubemx\network_output\sin_calcu_config.h        
+C:\Users\kingham\.stm32cubemx\network_output\sin_calcu.h               
+C:\Users\kingham\.stm32cubemx\network_output\sin_calcu.c               
