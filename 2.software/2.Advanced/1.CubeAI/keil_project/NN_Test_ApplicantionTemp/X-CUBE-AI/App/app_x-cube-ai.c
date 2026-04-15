@@ -199,7 +199,7 @@ int post_process(ai_i8* data[])
   const float* output = (const float*)data[0];
 
   /* FireWater text frame for VOFA+: input(deg), prediction, ground truth */
-  printf("%.2f,%.4f,%.4f\r\n", s_input_deg, output[0], s_y_true);
+  printf("input, y_pre, y_ture: %.2f, %.2f, %.2f\r\n", s_input_deg, output[0], s_y_true);
 
   return 0;
 }
