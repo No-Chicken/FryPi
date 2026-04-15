@@ -72,57 +72,11 @@ open("./Embedded_things/sine_calcu.tflite", "wb").write(tflite_model)
 
 ### **4.生成工程**
 
-**5.更改代码**
+点击生成代码即可
 
-​	在main中，找到`MX_X_CUBE_AI_Process()`函数，然后更改其中的`aiSystemPerformanceProcess()`函数，更改为如下内容，其具体含义读者可以阅读手册或看API深入了解，这里不过多阐述。
+### **5.更改代码**
 
-```c
-int aiSystemPerformanceProcess(void)
-{
-		
-    int idx = 0;
-    int batch = 0;
-    float y_pred;
-    ai_buffer ai_input[AI_MNETWORK_IN_NUM];
-    ai_buffer ai_output[AI_MNETWORK_OUT_NUM];
-
-    ai_float input[1] = {0};  // initial
-    ai_float output[1] = {0};
-
-    if (net_exec_ctx[idx].handle == AI_HANDLE_NULL)
-    {
-        printf("E: network handle is NULL\r\n");
-        return -1;
-    }
-
-    ai_input[0] = net_exec_ctx[idx].report.inputs[0];
-    ai_output[0] = net_exec_ctx[idx].report.outputs[0];
-
-    //ai_float test_data[] = {0, 1, 2, 3, 4, 5, 6, 7};
-    uint16_t i=0;
-    while(i<=180)
-    {
-      i++;
-      if(i == 180)
-      {i=0;}
-    	input[0] = i;
-    	output[0] = 0;
-    	ai_input[0].data = AI_HANDLE_PTR(input);
-    	ai_output[0].data = AI_HANDLE_PTR(output);
-    	batch = ai_mnetwork_run(net_exec_ctx[idx].handle, &ai_input[0], &ai_output[0]);
-    	if (batch != 1)
-    	{
-    		aiLogErr(ai_mnetwork_get_error(net_exec_ctx[idx].handle),
-    				"ai_mnetwork_run");
-    		break;
-    	}
-    	y_pred = sin(input[0]*acos(-1)/180);
-    	printf("input, y_pre, y_ture: %.2f, %.2f, %.2f\r\n", input[0], output[0], y_pred);
-    	HAL_Delay(100);
-      
-    }
-}
-```
+详见仓库代码内容和手册教程
 
 ### **5.验证**
 
