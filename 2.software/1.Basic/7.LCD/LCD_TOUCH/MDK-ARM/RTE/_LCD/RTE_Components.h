@@ -4,7 +4,7 @@
  *      *** Do not modify ! ***
  *
  * Project: 'LCD' 
- * Target:  'ThermalCamera' 
+ * Target:  'LCD' 
  */
 
 #ifndef RTE_COMPONENTS_H
