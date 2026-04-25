@@ -46,7 +46,8 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
-
+volatile const char *g_overflow_task_name = 0;
+volatile TaskHandle_t g_overflow_task_handle = 0;
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
@@ -90,6 +91,22 @@ void vApplicationTickHook( void )
 		HAL_GPIO_TogglePin(LED_T_GPIO_Port, LED_T_Pin);
 	}
 }
+
+void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
+{
+  g_overflow_task_handle = xTask;
+  g_overflow_task_name = pcTaskName;
+
+  taskDISABLE_INTERRUPTS();
+
+  /* Set a breakpoint here to inspect pcTaskName and call stack. */
+  __BKPT(0);
+
+  for(;;)
+  {
+  }
+}
+
 /* USER CODE END 3 */
 
 /**
@@ -146,11 +163,15 @@ void MX_FREERTOS_Init(void) {
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
+	volatile uint8_t boom_buffer[60];
   /* Infinite loop */
   for(;;)
   {
 		// HAL_GPIO_TogglePin(LED_T_GPIO_Port, LED_T_Pin);
-    osDelay(500);
+		for(uint32_t i=0; i<60; i++) {
+			boom_buffer[i] = 0xaa;
+		}			
+    osDelay(1);
   }
   /* USER CODE END StartDefaultTask */
 }
